@@ -1,7 +1,7 @@
 # Bulletiini
-Helsingin yliopiston Tietokantaprojekti-kurssin harjoitustyö. Sovellus tarjoaa toiminnallisuuden yksinkertaiselle keskustelufoorumille.
+(Helsingin yliopiston Tietokantaprojekti-kurssin harjoitustyö.)
 
-Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread) ja jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
+Sovellus tarjoaa toiminnallisuuden yksinkertaiselle keskustelufoorumille. Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread) ja jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
 
 Perustoiminnallisuuden hahmottelua:
 
