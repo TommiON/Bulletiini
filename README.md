@@ -11,6 +11,10 @@ Perustoiminnallisuuden hahmottelua:
 * Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
 * Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös Aiheiden lisäämiseen/poistamiseen ja muiden käyttäjien käyttäjätietoihin.
 
-Alustava kaavio tietokannan rakenteesta:
+## Tietokantakaavio
 
-![](Tietokantakaavio.png)
+![](documentation/Tietokantakaavio.png)
+
+## Heroku-sovelluksen osoite
+
+[https://bulletiini.herokuapp.com/](https://bulletiini.herokuapp.com/)
