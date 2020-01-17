@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<h1>Käyttäjät</h1>
+<table>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.username }}</td>
+      {% if user.isAdmin %} <td>(ylläpitäjä)</td> {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
