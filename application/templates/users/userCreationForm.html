@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>Lisää uusi käyttäjä</h1>
+
+<h4>Lisää uusi käyttäjä</h4>
 <form method="POST" action="{{ url_for('users_create') }}">
     <p>Nimi: <input type="text" name="name"/></p> 
     <p>Salasana: <input type="text" name="password"/></p>
     <input type="submit" value="Lisää käyttäjä"/>
-  </form>
+</form>
+
 {% endblock %}

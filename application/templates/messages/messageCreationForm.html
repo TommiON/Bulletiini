@@ -2,7 +2,7 @@
   
 {% block body %}
 
-<h1>Kirjoita uusi viesti</h1>
+<h4>Kirjoita uusi viesti</h4>
 <form method="POST" action="{{ url_for('messages_create') }}">
     <p>Otsikko: <input type="text" name="title"/></p> 
     <p>Viesti: <input type="text" name="content"/></p>

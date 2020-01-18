@@ -3,14 +3,15 @@
 {% block body %}
 
 <h4>Käyttäjät</h4>
-<a href="{{ url_for('users_creationForm') }}">Lisää uusi käyttäjä</a>
-<table>
+<form method="GET" action="{{ url_for('users_creationForm') }}">
+    <input type="submit" value="Lisää uusi käyttäjä"/>
+</form>
+<ul>
     {% for user in users %}
-    <tr>
-      <td><a href="{{ url_for('user_details', user_id=user.id) }}">{{ user.username }} </a></td>
-      {% if user.isAdmin %} <td>(ylläpitäjä)</td> {% endif %}
-    </tr>
+    <li>
+      <a href="{{ url_for('user_details', user_id=user.id) }}"> {{ user.username }} </a> {% if user.isAdmin %} (ylläpitäjä) {% endif %}
+    </li>
     {% endfor %}
-</table>
+</ul>
 
 {% endblock %}

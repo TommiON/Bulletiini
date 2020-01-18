@@ -1,3 +1,4 @@
+# from datetime import datetime
 from application import db
 
 class User(db.Model):
@@ -5,11 +6,11 @@ class User(db.Model):
     username = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(30), nullable=False)
     isAdmin = db.Column(db.Boolean, nullable=False)
-    # lisätään vielä uusi attribuutti: liittymispäivä?
+    joined = db.Column(db.DateTime(timezone=False))
 
-    def __init__(self, username, password, isAdmin):
+    def __init__(self, username, password, isAdmin, joined):
         self.username = username
         self.password = password
-        # tässä vaiheessa asetetaan kaikki admineiksi, myöhemmin kanta-admin voi muuttaa muiden käyttäjien statusta
-        self.isAdmin = True
+        self.isAdmin = isAdmin
+        self.joined = joined
 
