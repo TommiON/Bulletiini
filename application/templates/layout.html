@@ -5,12 +5,12 @@
     <title>Bulletiini</title>
   </head>
 
+  <h1>Bulletiini</h1>
+  <a href="{{ url_for('messages_list') }} ">Viestinäkymä</a>
+  <a href="{{ url_for('users_list') }}">Käyttäjänäkymä</a>
+  
   <body>
     {% block body %}
-      <p>
-        Placeholder content...
-      </p>
     {% endblock %}
-    
   </body>
 </html>

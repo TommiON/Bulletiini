@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<h1>{{ user.username }}</h1>
+<table>
+    <tr>
+        <td>Ylläpitäjän oikeudet: </td>
+        {% if user.isAdmin == True %} <td>kyllä</td> {% endif %}
+        {% if user.isAdmin == False %} <td>ei</td> {% endif %}
+    </tr>
+    <tr>
+        <td>Viestejä: </td>
+        <td>x</td>
+    </tr>
+</table>
+{% endblock %}

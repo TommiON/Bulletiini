@@ -12,4 +12,7 @@ from application import views
 from application.users import models
 from application.users import views
 
+from application.messages import models
+from application.messages import views
+
 db.create_all()
