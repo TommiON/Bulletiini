@@ -1,6 +1,7 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
 from application.messages.models import Message
+from application.messages.forms import MessageForm
 from datetime import datetime
 
 @app.route("/messages", methods=["GET"])
@@ -15,11 +16,18 @@ def message_details(message_id):
     
 @app.route("/messages/new", methods=["GET"])
 def messages_creationForm():
-    return render_template("messages/messageCreationForm.html")
+    return render_template("messages/messageCreationForm.html", form=MessageForm())
 
 @app.route("/messages", methods=["POST"])
 def messages_create():
-    newMessage = Message(request.form.get("title"), request.form.get("content"), datetime.now())
+    form = MessageForm(request.form)
+
+    if not form.validate():
+        return render_template("messages/messageCreationForm.html", form = form)
+
+    newMessage = Message(form.title.data, form.content.data, datetime.now())
+
     db.session.add(newMessage)
     db.session.commit()
+    
     return redirect(url_for("messages_list"))
