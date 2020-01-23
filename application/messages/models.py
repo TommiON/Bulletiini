@@ -11,3 +11,15 @@ class Message(db.Model):
         self.title = title
         self.content = content
         self.timeOfSending = timeOfSending
+
+    def get_id(self):
+        return self.id
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
