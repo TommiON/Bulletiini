@@ -3,7 +3,7 @@
 
 ## Sovelluksen tarkoitus
 
-Sovellus tarjoaa toiminnallisuuden yksinkertaiselle keskustelufoorumille. Tarkempaa tietoa suunnitelluista käyttötapauksista [käyttötapaus- ja käsitedokumentissa](documentation/usecases.md).
+Sovellus tarjoaa toiminnallisuuden yksinkertaiselle keskustelufoorumille. Tarkempaa tietoa [käyttötapaus- ja käsitedokumentissa](documentation/usecases.md).
 
 ## Tietokantakaavio
 
