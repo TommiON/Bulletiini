@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, validators
   
 class LoginForm(FlaskForm):
-    username = StringField("Username", [validators.Length(min=3), validators.Length(max=50)])
+    username = StringField("Käyttäjänimi", [validators.Length(min=3), validators.Length(max=50)])
     password = PasswordField("Salasana")
   
     class Meta:
