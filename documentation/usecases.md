@@ -2,15 +2,13 @@
 
 Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread) ja jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
 
-## Käyttötapaukset
+## Käyttötapauksia
 
-* Käyttäjä voi luoda uusia viestejä joko 1) aloittamalla uuden keskusteluketjun, jonka ensimmäiseksi viestiksi uusi viesti tulee, tai 2) kirjoittamalla viestin vastaukseksi olemassa olevaan keskusteluketjuun.
-** Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Näistä tulee kyseisen keskusteluketjun kaikkien tulevien viestien aiheita.
-* Käyttäjä voi selailla keskusteluketjuja aikajärjestyksessä.
-* Käyttäjä voi jaotella keskusteluketjuja 
-* Keskusteluketjuun vastaukseksi kirjoitetut viestit näytetään aikajärjestyksessä. Sovellus ei siis tarjoa toiminnallisuutta haarautuviin vastauspuihin.
-* Keskusteluketjujen lisäksi viestejä voi jaotella Aiheiden (Topic) mukaan. Nämä ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Käyttäjä ei voi itse luoda aiheita, vaan sovellus tarjoaa listan valmiita aiheita. Aihe on aina kokonaisen keskusteluketjun ominaisuus, ja aiheieima kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita.
+* Käyttäjä voi aloittaa uuden keskusteluketjun ja kirjoittaa sen ensimmäisen viestin. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita.
+* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only lista, jonka sisältöö ei voi vaikuttaa.
+* Keskusteluketjuja voi selata aikajärjestyksessä tai suodattaa niitä aiheiden mukaan.
+* Yksittäisen keskusteluketjun voi avata, jolloin sen kaikki viestit näytetään aikajärjestyksessä. Tässä näkymässä pääsee myös kirjoittamaan uuden viestin kyseiseen ketjuun.Keskusteluketjuun vastaukseksi kirjoitetut viestit näytetään aikajärjestyksessä. Sovellus ei siis tarjoa toiminnallisuutta haarautuviin vastauspuihin.
 * Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
-* Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös Aiheiden lisäämiseen/poistamiseen ja muiden käyttäjien käyttäjätietoihin.
+* Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös muiden käyttäjien käyttäjätietoihin.
 
 (Täydentyy ja tarkentuu projektin edetessä.)
