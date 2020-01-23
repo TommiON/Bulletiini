@@ -2,14 +2,14 @@
   
 {% block body %}
     
-    <h4>Viestit</h4>
-    <form method="GET" action="{{ url_for('messages_creationForm') }}">
-        <input type="submit" value="Kirjoita uusi viesti"/>
-    </form>
-    <ul>
-        {% for message in messages %}
-        <li><a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>, lähetetty {{ message.timeOfSending }} </li>
-        {% endfor %}
-    </ul>
+<h4>Viestit</h4>
+<form method="GET" action="{{ url_for('messages_creationForm') }}">
+    <input type="submit" value="Kirjoita uusi viesti"/>
+</form>
+<ul>
+    {% for message in messages %}
+    <li><a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>, lähetetty {{ message.timeOfSending }} </li>
+    {% endfor %}
+</ul>
    
 {% endblock %}
