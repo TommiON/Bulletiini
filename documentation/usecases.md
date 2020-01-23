@@ -4,8 +4,10 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 
 ## Käyttötapaukset
 
-* Käyttäjä voi luoda uusia Viestejä joko 1) aloittamalla uuden keskusteluketjun, jonka ensimmäiseksi viestiksi uusi viesti tulee, tai 2) kirjoittamalla viestin vastaukseksi olemassa olevaan keskusteluketjuun.
-* Käyttäjä voi selailla keskusteluketjuja 
+* Käyttäjä voi luoda uusia viestejä joko 1) aloittamalla uuden keskusteluketjun, jonka ensimmäiseksi viestiksi uusi viesti tulee, tai 2) kirjoittamalla viestin vastaukseksi olemassa olevaan keskusteluketjuun.
+** Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Näistä tulee kyseisen keskusteluketjun kaikkien tulevien viestien aiheita.
+* Käyttäjä voi selailla keskusteluketjuja aikajärjestyksessä.
+* Käyttäjä voi jaotella keskusteluketjuja 
 * Keskusteluketjuun vastaukseksi kirjoitetut viestit näytetään aikajärjestyksessä. Sovellus ei siis tarjoa toiminnallisuutta haarautuviin vastauspuihin.
 * Keskusteluketjujen lisäksi viestejä voi jaotella Aiheiden (Topic) mukaan. Nämä ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Käyttäjä ei voi itse luoda aiheita, vaan sovellus tarjoaa listan valmiita aiheita. Aihe on aina kokonaisen keskusteluketjun ominaisuus, ja aiheieima kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita.
 * Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
