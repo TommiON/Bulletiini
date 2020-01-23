@@ -6,6 +6,11 @@ from application import app, db
 from application.users.models import User
 from application.users.forms import LoginForm
 
+@app.route("/users", methods=["GET"])
+def users_list():
+    # return render_template("users/userList.html", users = User.query.all())
+    return "Placeholder..."
+
 @app.route("/users/login", methods = ["GET", "POST"])
 def users_login():
     if request.method == "GET":
@@ -26,10 +31,6 @@ def users_login():
 def users_logout():
     logout_user()
     return redirect(url_for("index"))
-
-@app.route("/users", methods=["GET"])
-def users_list():
-    return render_template("users/userList.html", users = User.query.all())
 
 @app.route("/users/<user_id>", methods=["GET"])
 def user_details(user_id):
