@@ -1,5 +1,5 @@
 # Bulletiini
-(Helsingin yliopiston Tietokantaprojekti-kurssin harjoitustyö.)
+Helsingin yliopiston Tietokantaprojekti-kurssin harjoitustyö.
 
 ## Sovelluksen tarkoitus
 
