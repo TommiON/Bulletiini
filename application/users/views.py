@@ -8,7 +8,8 @@ from application.users.forms import LoginForm
 
 @app.route("/users", methods=["GET"])
 def users_list():
-    return render_template("users/userList.html", users = User.query.all())
+    return render_template("users/userList.html", users = [])
+    # return render_template("users/userList.html", users = User.query.all())
     # return "Placeholder..."
 
 @app.route("/users/login", methods = ["GET", "POST"])
