@@ -8,7 +8,7 @@ class User(db.Model):
     username = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(30), nullable=False)
     isAdmin = db.Column(db.Boolean, nullable=False)
-    joined = db.Column(db.DateTime, default=db.func.current_timestamp())
+    joined = db.Column(db.DateTime) #default=db.func.current_timestamp())
 
     def __init__(self, username, password, isAdmin, joined):
         self.username = username
