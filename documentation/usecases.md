@@ -1,7 +1,14 @@
-Perustoiminnallisuuden hahmottelua:
+## Keskeiset käsitteet
 
-* Uusia Viestejä voi luoda kahdella tavalla: 1) aloittaa uuden Keskusteluketjun (Thread), jonka ensimmäiseksi viestiksi uusi viesti tulee, tai 2) kirjoittaa viestin vastaukseksi olemassa olevaan keskusteluketjuun.
+Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread) ja jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
+
+## Käyttötapaukset
+
+* Käyttäjä voi luoda uusia Viestejä joko 1) aloittamalla uuden keskusteluketjun, jonka ensimmäiseksi viestiksi uusi viesti tulee, tai 2) kirjoittamalla viestin vastaukseksi olemassa olevaan keskusteluketjuun.
+* Käyttäjä voi selailla keskusteluketjuja 
 * Keskusteluketjuun vastaukseksi kirjoitetut viestit näytetään aikajärjestyksessä. Sovellus ei siis tarjoa toiminnallisuutta haarautuviin vastauspuihin.
 * Keskusteluketjujen lisäksi viestejä voi jaotella Aiheiden (Topic) mukaan. Nämä ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Käyttäjä ei voi itse luoda aiheita, vaan sovellus tarjoaa listan valmiita aiheita. Aihe on aina kokonaisen keskusteluketjun ominaisuus, ja aiheieima kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita.
 * Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
 * Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös Aiheiden lisäämiseen/poistamiseen ja muiden käyttäjien käyttäjätietoihin.
+
+(Täydentyy ja tarkentuu projektin edetessä.)
