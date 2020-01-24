@@ -13,7 +13,7 @@ def users_list():
 def user_details(user_id):
     # miten käsitellään jos id viittaa olemattomaan käyttäjään?
     user = User.query.get(user_id)
-    return render_template("templates/users/userDetails.html", user=user)
+    return render_template("users/userDetails.html", user=user)
     # myöhemmin tietokantahaku, joka hakee kyseisen käyttäjän viestin kokonaismäärän?
 
 @app.route("/users/new", methods=["GET"])
