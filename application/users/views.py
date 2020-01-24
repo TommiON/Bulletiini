@@ -7,7 +7,7 @@ from application.users.forms import UserCreationForm
 
 @app.route("/users", methods=["GET"])
 def users_list():
-    return "Tähän käyttäjälista..."
+    return render_template("users/userList.html", users=User.query.all()) 
 
 @app.route("/users/<user_id>", methods=["GET"])
 def user_details(user_id):
@@ -32,3 +32,14 @@ def users_create():
     db.session.add(newUser)
     db.session.commit()
     return redirect(url_for("index"))
+
+# Keskeneräinen toiminnallisuus, testataan vain vähän tietokannan päivittämistä...
+@app.route("/users/<user_id>/", methods=["POST"])
+def user_change_admin_status(user_id):
+    user = User.query.get(user_id)
+    user.isAdmin = not user.isAdmin
+    
+    db.session.commit()
+
+    return redirect(url_for("users_list"))
+
