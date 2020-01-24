@@ -6,15 +6,14 @@
   </head>
 
   {% if current_user.is_authenticated %}
-  <p>Kirjautunut nimellä <b>{{ current_user.username }}</b>. <a href="{{ url_for('users_logout') }}">Kirjaudu ulos</a></p>
+  <p>Kirjautunut nimellä <b>{{ current_user.username }}</b>. <a href="{{ url_for('authentication_logout') }}">Kirjaudu ulos</a></p>
   {% else %}
-  <a href="{{ url_for('users_login') }}">Kirjaudu</a>
+  <a href="{{ url_for('authentication_login') }}">Kirjaudu</a> tai <a href="{{ url_for('users_creationForm') }}">luo käyttäjätunnus</a>.
   {% endif %}
 
   <h1>Bulletiini</h1>
-  <a href="{{ url_for('users_creationForm') }}">Luo käyttäjätunnus</a>
-  <a href="{{ url_for('messages_list') }} ">Viestinäkymä</a>
-  <a href="{{ url_for('users_list') }}">Käyttäjänäkymä</a>
+  
+  <a href="{{ url_for('messages_list') }} ">Viestit</a>
   
   <body>
     {% block body %}

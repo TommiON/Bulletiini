@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators
+from wtforms import PasswordField, StringField, validators
   
-class UserCreationForm(FlaskForm):
+class LoginForm(FlaskForm):
     username = StringField("Käyttäjänimi", [validators.Length(min=3), validators.Length(max=50)])
-    password = StringField("Salasana")
+    password = PasswordField("Salasana")
   
     class Meta:
         csrf = False
