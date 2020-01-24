@@ -8,7 +8,7 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 * Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only lista, jonka sisältöö ei voi vaikuttaa.
 * Keskusteluketjuja voi selata aikajärjestyksessä tai suodattaa niitä aiheiden mukaan.
 * Yksittäisen keskusteluketjun voi avata, jolloin sen kaikki viestit näytetään aikajärjestyksessä. Tässä näkymässä pääsee myös kirjoittamaan uuden viestin kyseiseen ketjuun.Keskusteluketjuun vastaukseksi kirjoitetut viestit näytetään aikajärjestyksessä. Sovellus ei siis tarjoa toiminnallisuutta haarautuviin vastauspuihin.
-* Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
+* Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Käyttäjä voi siis muokata viestinsä otsikkoa ja sisältöä sen jälkeen kun se on lähetetty ja myös poistaa koko viestin. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
 * Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös muiden käyttäjien käyttäjätietoihin.
 
 (Täydentyy ja tarkentuu projektin edetessä.)
