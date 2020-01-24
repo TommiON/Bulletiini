@@ -11,4 +11,4 @@ Sovellus tarjoaa toiminnallisuuden yksinkertaiselle keskustelufoorumille. Tarkem
 
 ## Heroku-sovelluksen osoite
 
-[https://bulletiini.herokuapp.com/](https://bulletiini.herokuapp.com/)
+Sovelluksen tämänhetkinen työversio löytyy [Herokusta](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella "testi" ja salasanalla "testi". Osa sovelluksesta toimii myös kirjautumattomalle käyttäjälle.
