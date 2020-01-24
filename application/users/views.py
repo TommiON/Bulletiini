@@ -6,7 +6,7 @@ from application import app, db
 from application.users.models import User
 from application.users.forms import LoginForm
 
-@app.route("/users", methods=["GET"])
+@app.route("/users")
 def users_list():
     return render_template("users/userList.html")
 
