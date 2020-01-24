@@ -8,7 +8,7 @@ from application.users.forms import LoginForm
 
 @app.route("/users", methods=["GET"])
 def users_list():
-    return render_template("users/userList.html", users = User.query.all())
+    return render_template("users/userList.html")
 
 @app.route("/users/login", methods = ["GET", "POST"])
 def users_login():
@@ -48,4 +48,4 @@ def users_create():
     newUser = User(request.form.get("name"), request.form.get("password"), True, datetime.now())
     db.session.add(newUser)
     db.session.commit()
-    return redirect(url_for("users_list"))
+    return redirect(url_for("index"))
