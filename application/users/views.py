@@ -5,9 +5,9 @@ from application import app, db
 from application.users.models import User
 from application.users.forms import UserCreationForm
 
-@app.route("/foobars", methods=["GET"])
+@app.route("/users", methods=["GET"])
 def users_list():
-    return render_template("users/userList.html")
+    return "Tähän käyttäjälista..."
 
 @app.route("/users/<user_id>", methods=["GET"])
 def user_details(user_id):
