@@ -1,13 +1,12 @@
-from flask import render_template, request, redirect, url_for
-from datetime import datetime
-
 from application import app, db
+from flask import render_template, request, redirect, url_for
 from application.users.models import User
 from application.users.forms import UserCreationForm
+from datetime import datetime
 
 @app.route("/users", methods=["GET"])
 def users_list():
-    return render_template("users/userList.html", users=User.query.all()) 
+    return render_template("userList.html", users=User.query.all()) 
 
 @app.route("/users/<user_id>", methods=["GET"])
 def user_details(user_id):
