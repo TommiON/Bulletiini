@@ -12,12 +12,12 @@ def users_list():
 def user_details(user_id):
     # miten käsitellään jos id viittaa olemattomaan käyttäjään?
     user = User.query.get(user_id)
-    return render_template("users/userDetails.html", user=user)
+    return render_template("userDetails.html", user=user)
     # myöhemmin tietokantahaku, joka hakee kyseisen käyttäjän viestin kokonaismäärän?
 
 @app.route("/users/new", methods=["GET"])
 def users_creationForm():
-    return render_template("users/userCreationForm.html", form=UserCreationForm())
+    return render_template("userCreationForm.html", form=UserCreationForm())
 
 @app.route("/users", methods=["POST"])
 def users_create():
@@ -25,7 +25,7 @@ def users_create():
     form = UserCreationForm(request.form)
 
     if not form.validate():
-        return render_template("users/userCreationForm.html", form = form)
+        return render_template("userCreationForm.html", form = form)
 
     newUser = User(form.username.data, form.password.data, False, datetime.now())
     db.session.add(newUser)

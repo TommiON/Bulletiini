@@ -6,24 +6,24 @@ from datetime import datetime
 
 @app.route("/messages", methods=["GET"])
 def messages_list():
-    return render_template("messages/messageList.html", messages = Message.query.all())
+    return render_template("messageList.html", messages = Message.query.all())
 
 @app.route("/messages/<message_id>", methods=["GET"])
 def message_details(message_id):
     # miten käsitellään jos id viittaa olemattomaan viestiin?
     message = Message.query.get(message_id)
-    return render_template("messages/messageDetails.html", message=message)
+    return render_template("messageDetails.html", message=message)
     
 @app.route("/messages/new", methods=["GET"])
 def messages_creationForm():
-    return render_template("messages/messageCreationForm.html", form=MessageForm())
+    return render_template("messageCreationForm.html", form=MessageForm())
 
 @app.route("/messages", methods=["POST"])
 def messages_create():
     form = MessageForm(request.form)
 
     if not form.validate():
-        return render_template("messages/messageCreationForm.html", form = form)
+        return render_template("messageCreationForm.html", form = form)
 
     newMessage = Message(form.title.data, form.content.data, datetime.now())
 
