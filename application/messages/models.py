@@ -6,6 +6,7 @@ class Message(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(5000), nullable=True)
     timeOfSending = db.Column(db.DateTime(timezone=False))
+    authorId = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
     def __init__(self, title, content, timeOfSending):
         self.title = title

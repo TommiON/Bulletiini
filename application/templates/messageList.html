@@ -8,7 +8,11 @@
 </form>
 <ul>
     {% for message in messages %}
-    <li><a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>, lähetetty {{ message.timeOfSending }} </li>
+    <li>
+        <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
+        käyttäjältä <b> {{ message.authorId }} </b>,
+        lähetetty {{ message.timeOfSending }}
+    </li>
     {% endfor %}
 </ul>
    

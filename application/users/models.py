@@ -9,6 +9,7 @@ class User(db.Model):
     password = db.Column(db.String(30), nullable=False)
     isAdmin = db.Column(db.Boolean, nullable=False)
     joined = db.Column(db.DateTime, default=db.func.current_timestamp())
+    messages = db.relationship("Message", backref='account', lazy=True)
 
     def __init__(self, username, password, isAdmin, joined):
         self.username = username

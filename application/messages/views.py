@@ -1,6 +1,6 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from datetime import datetime
 
 from application.messages.models import Message
@@ -31,6 +31,7 @@ def messages_create():
         return render_template("messageCreationForm.html", form = form)
 
     newMessage = Message(form.title.data, form.content.data, datetime.now())
+    newMessage.authorId = current_user.id
 
     db.session.add(newMessage)
     db.session.commit()
