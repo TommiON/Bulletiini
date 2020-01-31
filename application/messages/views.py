@@ -34,7 +34,7 @@ def messages_create():
     newMessage.authorId = current_user.id
     db.session.add(newMessage)
     db.session.commit()
-    return redirect(url_for("messages_list"))
+    return render_template("messageDetails.html", message=newMessage)
 
 # poistaa yksittäisen viestin
 @app.route("/messages/delete/<message_id>", methods=["POST"])
@@ -62,4 +62,4 @@ def messages_edit(message_id):
     message.title = form.title.data
     message.content = form.content.data
     db.session.commit()
-    return redirect(url_for("messages_list"))
+    return render_template("messageDetails.html", message=message)
