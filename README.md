@@ -12,7 +12,7 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 ### Käyttötapauksia
 
 * Käyttäjä voi aloittaa uuden keskusteluketjun ja kirjoittaa sen ensimmäisen viestin. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita.
-* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only lista, jonka sisältöö ei voi vaikuttaa.
+* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only -lista, jonka sisältöö ei voi vaikuttaa.
 * Keskusteluketjuja voi selata aikajärjestyksessä tai suodattaa niitä aiheiden mukaan.
 * Yksittäisen keskusteluketjun voi avata, jolloin sen kaikki viestit näytetään aikajärjestyksessä. Keskusteluketjunäkymä näyttää viesteistä otsikon, lähettäjän ja lähetysajan. Tässä näkymässä pääsee myös kirjoittamaan uuden viestin kyseiseen ketjuun. Keskusteluketjuun vastaukseksi kirjoitetut viestit näytetään aikajärjestyksessä. Sovellus ei siis tarjoa toiminnallisuutta haarautuviin vastauspuihin.
 * Viestilistasta voi puolestaan avata yksittäisen viestin, jolloin pääsee näkemään sen varsinaisen sisällön. Jos käyttäjä avaa oman viestinsä, tässä näkymässä pääsee myös muokkaamaan viestiä tai poistamaan sen.
