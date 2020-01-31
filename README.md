@@ -18,6 +18,7 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 * Viestilistasta voi puolestaan avata yksittäisen viestin, jolloin pääsee näkemään sen varsinaisen sisällön. Jos käyttäjä avaa oman viestinsä, tässä näkymässä pääsee myös muokkaamaan viestiä tai poistamaan sen.
 * Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Käyttäjä voi siis muokata viestinsä otsikkoa ja sisältöä sen jälkeen kun se on lähetetty ja myös poistaa koko viestin. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
 * Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös muiden käyttäjien käyttäjätietoihin.
+* Sovellus tarjoaa myös erillisen tilastonäkymän, jossa voi tarkastella erilaisia tilastoja: aktiivisimmat viestien kirjoittajat, suosituimmat aiheet, viestin ja käyttäjien kokonaismäärä jne.
 
 _(Täydentyy ja tarkentuu projektin edetessä.)_
 
@@ -27,4 +28,4 @@ _(Täydentyy ja tarkentuu projektin edetessä.)_
 
 # Heroku-sovelluksen osoite
 
-Sovelluksen tämänhetkinen työversio löytyy [Herokusta](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella "testi" ja salasanalla "testi". Tämänhetkisessä versiossa kaikki (vähäinen) toiminnallisuus näkyy kuitenkin myös kirjautumattomalle käyttäjälle.
+Sovelluksen tämänhetkinen työversio löytyy [Herokusta](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella "testi" ja salasanalla "testi". Osa toiminallisuudesta (viestien lukeminen, käyttäjälista) on saatavilla myös ilman kirjautumista.
