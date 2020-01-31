@@ -7,9 +7,11 @@
 <form method="POST" action="{{ url_for('messages_delete', message_id=message.id) }}">
     <input type="submit" value="Poista viesti"/>
 </form>
-<form method="POST" action="{{ url_for('messages_edit', message_id=message.id) }}">
+<form method="GET" action="{{ url_for('messages_editingForm', message_id=message.id) }}">
     <input type="submit" value="Muokkaa viestiä"/>
 </form>
+
+
 <p>{{ message.content }} </p>
 
 {% endblock %}

@@ -10,10 +10,8 @@ def users_list():
 
 @app.route("/users/<user_id>", methods=["GET"])
 def user_details(user_id):
-    # miten käsitellään jos id viittaa olemattomaan käyttäjään?
     user = User.query.get(user_id)
     return render_template("userDetails.html", user=user)
-    # myöhemmin tietokantahaku, joka hakee kyseisen käyttäjän viestin kokonaismäärän?
 
 @app.route("/users/new", methods=["GET"])
 def users_creationForm():
@@ -21,7 +19,6 @@ def users_creationForm():
 
 @app.route("/users", methods=["POST"])
 def users_create():
-    # tässä vaiheessa asetetaan kaikki käyttäjät admineiksi, varsinaisessa toteutuksessa kanta-admin voi muuttaa muiden käyttäjien statusta
     form = UserCreationForm(request.form)
 
     if not form.validate():
@@ -32,7 +29,6 @@ def users_create():
     db.session.commit()
     return redirect(url_for("index"))
 
-# Keskeneräinen toiminnallisuus, testataan vain vähän tietokannan päivittämistä...
 @app.route("/users/<user_id>/", methods=["POST"])
 def user_change_admin_status(user_id):
     user = User.query.get(user_id)
