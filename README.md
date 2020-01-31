@@ -24,7 +24,7 @@ _(Täydentyy ja tarkentuu projektin edetessä.)_
 
 # Tietokantakaavio
 
-![](documentation/Tietokantakaavio.png)
+![T](documentation/Tietokantakaavio.png)
 
 # Heroku-sovelluksen osoite
 
