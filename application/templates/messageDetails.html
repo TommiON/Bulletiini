@@ -3,7 +3,13 @@
 {% block body %}
 
 <h4>{{ message.title }}</h4>
-<p><em>Lähetetty {{ message.timeOfSending }}</em></p>
+<p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.timeOfSending }}</em></p>
+<form method="POST" action="{{ url_for('messages_delete', message_id=message.id) }}">
+    <input type="submit" value="Poista viesti"/>
+</form>
+<form method="POST" action="{{ url_for('messages_edit', message_id=message.id) }}">
+    <input type="submit" value="Muokkaa viestiä"/>
+</form>
 <p>{{ message.content }} </p>
 
 {% endblock %}

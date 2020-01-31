@@ -6,7 +6,6 @@ from datetime import datetime
 from application.messages.models import Message
 from application.messages.forms import MessageForm
 
-
 @app.route("/messages", methods=["GET"])
 def messages_list():
     return render_template("messageList.html", messages = Message.query.all())
@@ -37,3 +36,16 @@ def messages_create():
     db.session.commit()
     
     return redirect(url_for("messages_list"))
+
+@app.route("/messages/delete/<message_id>", methods=["POST"])
+@login_required
+def messages_delete(message_id):
+    messageToBeDeleted = Message.query.get(message_id)
+    db.session.delete(messageToBeDeleted)
+    db.session.commit()
+    return redirect(url_for("messages_list"))
+
+@app.route("/messages/edit/<message_id>", methods=["POST"])
+@login_required
+def messages_edit(message_id):
+    messageToBeEdited = Message.query.get(message_id)
