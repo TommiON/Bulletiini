@@ -10,6 +10,7 @@ class User(db.Model):
     isAdmin = db.Column(db.Boolean, nullable=False)
     joined = db.Column(db.DateTime, default=db.func.current_timestamp())
     messages = db.relationship("Message", backref='sender', lazy=True)
+    threads = db.relationship("Thread", backref='opener', lazy=True)
 
     def __init__(self, username, password, isAdmin, joined):
         self.username = username

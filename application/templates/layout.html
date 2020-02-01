@@ -5,16 +5,27 @@
     <title>Bulletiini</title>
   </head>
 
-  {% if current_user.is_authenticated %}
-  <p>Kirjautunut nimellä <b>{{ current_user.username }}</b>. <a href="{{ url_for('authentication_logout') }}">Kirjaudu ulos</a></p>
-  {% else %}
-  <a href="{{ url_for('authentication_login') }}">Kirjaudu</a> tai <a href="{{ url_for('users_creationForm') }}">luo käyttäjätunnus</a>.
-  {% endif %}
-
   <h1>Bulletiini</h1>
-  
-  <a href="{{ url_for('messages_list') }} ">Viestit</a>
-  <a href="{{ url_for('users_list') }}">Käyttäjät</a>
+  <table>
+    <tr>
+      <td>
+        <a href="{{ url_for('messages_list') }} ">Viestit.</a>
+      </td>
+      <td>
+        <a href="{{ url_for('users_list') }}">Käyttäjät.</a>
+      </td>
+      <td>
+        <a href="{{ url_for('users_creationForm') }}">Luo käyttäjätunnus.</a>
+      </td>
+      <td>
+        {% if current_user.is_authenticated %}
+        <p>Kirjautunut nimellä <b>{{ current_user.username }}</b>. <a href="{{ url_for('authentication_logout') }}">Kirjaudu ulos</a></p>
+        {% else %}
+        <a href="{{ url_for('authentication_login') }}"><b>Kirjaudu.</b></a>
+        {% endif %}      
+      </td>
+    </tr>
+  </table>
   
   <body>
     {% block body %}

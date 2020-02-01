@@ -23,6 +23,8 @@ from application.users import views
 from application.messages import models
 from application.messages import views
 
+from application.threads import models
+
 # login-toiminnallisuus
 from application.users.models import User
 from os import urandom
