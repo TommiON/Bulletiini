@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 
 class Thread(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -23,3 +24,11 @@ class Thread(db.Model):
 
     def is_authenticated(self):
         return True
+    
+    @staticmethod
+    def totalNumberOfMessages(thread_id):
+        sqlQuery = text("SELECT COUNT(Message.id) FROM Message WHERE Message.threadId = :thread").params(thread=thread_id)
+        result = db.engine.execute(sqlQuery)
+        print("tulos COUNT-kyselystä:")
+        for row in result:
+            return row[0]

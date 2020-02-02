@@ -9,7 +9,10 @@
 <ul>
     {% for thread in threads %}
     <li>
-        <a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a>, aloittanut <b> {{ thread.opener.username }} </b> {{ thread.timeOfOpening }}
+        <a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a>,
+        aloittanut <b> {{ thread.opener.username }} </b>
+        {{ thread.timeOfOpening }}, 
+        viestejä {{ thread.totalNumberOfMessages(thread.id)}}
     </li>
     {% endfor %}
 </ul>
