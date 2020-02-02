@@ -3,7 +3,7 @@
 {% block body %}
 
 <h4>Kirjoita uusi viesti</h4>
-<form method="POST" action="{{ url_for('thread_create') }}">
+<form method="POST" action="{{ url_for('thread_respond', thread_id=threadId) }}">
     <table>
         <tr>
             <td>{{ form.title.label }}</td>

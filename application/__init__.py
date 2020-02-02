@@ -1,6 +1,7 @@
 from flask import Flask
 app = Flask(__name__)
 
+# tietokannan konfigurointi
 from flask_sqlalchemy import SQLAlchemy
 
 import os
@@ -13,17 +14,12 @@ else:
 
 db = SQLAlchemy(app)
 
+# sovelluksen perusrakenne rakentuu tässä
 from application import views
-
 from application.authentication import views
-
-from application.users import models
-from application.users import views
-
-from application.messages import models
-from application.messages import views
-
-from application.threads import models
+from application.users import models, views
+from application.messages import models, views
+from application.threads import models, views
 
 # login-toiminnallisuus
 from application.users.models import User

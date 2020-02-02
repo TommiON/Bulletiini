@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+
+<h4>{{ thread.title }}</h4>
+<p><em>Aloittanut <b>{{ thread.opener.username }}</b> {{ thread.timeOfOpening }}</em></p>
+<form method="GET" action="{{ url_for('thread_responseForm', thread_id=thread.id) }}">
+    <input type="submit" value="Vastaa tähän ketjuun"/>
+</form>
+<ul>
+    {% for message in thread.messages %}
+    <li>
+        <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
+        käyttäjältä <b>{{ message.sender.username }}</b>,
+        lähetetty {{ message.timeOfSending }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

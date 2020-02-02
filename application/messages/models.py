@@ -7,11 +7,14 @@ class Message(db.Model):
     content = db.Column(db.String(5000), nullable=True)
     timeOfSending = db.Column(db.DateTime(timezone=False))
     authorId = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    threadId = db.Column(db.Integer, db.ForeignKey('thread.id'), nullable=False)
 
-    def __init__(self, title, content, timeOfSending):
+    def __init__(self, title, content, timeOfSending, authorId, threadId):
         self.title = title
         self.content = content
         self.timeOfSending = timeOfSending
+        self.authorId = authorId
+        self.threadId = threadId
 
     def get_id(self):
         return self.id

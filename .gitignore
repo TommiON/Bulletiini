@@ -4,3 +4,7 @@ __pycache__
 *.db
 **/bulletins.db
 *.code-workspace
+**/bulletiini.code-workspace
+.vscode
+.vscode/*
+*.pyc

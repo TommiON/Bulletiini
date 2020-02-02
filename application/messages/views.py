@@ -23,7 +23,6 @@ def message_details(message_id):
 def messages_creationForm():
     return render_template("messageCreationForm.html", form=MessageForm())
 
-# luo uuden viestin
 @app.route("/messages", methods=["POST"])
 @login_required
 def messages_create():

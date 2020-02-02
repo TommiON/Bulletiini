@@ -5,10 +5,12 @@ class Thread(db.Model):
     title = db.Column(db.String(50), nullable=False)
     timeOfOpening= db.Column(db.DateTime(timezone=False))
     authorId = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    messages = db.relationship("Message", backref='thread', lazy=True)
 
-    def __init__(self, title, timeOfOpening):
+    def __init__(self, title, timeOfOpening, authorId):
         self.title = title
         self.timeOfOpening = timeOfOpening
+        self.authorId = authorId
 
     def get_id(self):
         return self.id

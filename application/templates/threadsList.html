@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+    
+<h4>Keskustelut</h4>
+<form method="" action="{{ url_for('thread_newMessageForm') }}">
+    <input type="submit" value="Aloita uusi keskusteluketju"/>
+</form>
+<ul>
+    {% for thread in threads %}
+    <li>
+        <a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a>, aloittanut <b> {{ thread.opener.username }} </b> {{ thread.timeOfOpening }}
+    </li>
+    {% endfor %}
+</ul>
+   
+{% endblock %}
