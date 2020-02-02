@@ -17,24 +17,6 @@ def message_details(message_id):
     message = Message.query.get(message_id)
     return render_template("messageDetails.html", message=message)
 
-# palauttaa lomakkeen uuden viestin luomiseen
-@app.route("/messages/new", methods=["GET"])
-@login_required
-def messages_creationForm():
-    return render_template("messageCreationForm.html", form=MessageForm())
-
-@app.route("/messages", methods=["POST"])
-@login_required
-def messages_create():
-    form = MessageForm(request.form)
-    if not form.validate():
-        return render_template("messageCreationForm.html", form = form)
-    newMessage = Message(form.title.data, form.content.data, datetime.now())
-    newMessage.authorId = current_user.id
-    db.session.add(newMessage)
-    db.session.commit()
-    return render_template("messageDetails.html", message=newMessage)
-
 # poistaa yksittäisen viestin
 @app.route("/messages/delete/<message_id>", methods=["POST"])
 @login_required
