@@ -1,5 +1,6 @@
 # from datetime import datetime
 from application import db
+from sqlalchemy.sql import text
 
 class User(db.Model):
     __tablename__ = "account"
@@ -30,3 +31,9 @@ class User(db.Model):
     def is_authenticated(self):
         return True
 
+    @staticmethod
+    def totalNumberOfMessages(user_id):
+        sqlQuery = text("SELECT COUNT(Message.id) FROM Message WHERE Message.authorId = :user").params(user=user_id)
+        result = db.engine.execute(sqlQuery)
+        for row in result:
+            return row[0]

@@ -3,7 +3,12 @@
 {% block body %}
 
 <h4>{{ user.username }}</h4>
-
+<p>
+    Liittynyt: {{ user.joined }}
+</p>
+<p>
+    Viestejä: {{ user.totalNumberOfMessages(user.id)}}
+</p>
 <p>
     Ylläpitäjän oikeudet: 
     {% if user.isAdmin == True %} kyllä 
@@ -16,12 +21,6 @@
             <input type="submit" value="Tee käyttäjästä ylläpitäjä" />
         </form>
     {% endif %}
-</p>
-<p>
-    Viestejä: 
-</p>
-<p>
-    Liittynyt: {{ user.joined }}
 </p>
         
 {% endblock %}
