@@ -3,7 +3,7 @@
 {% block body %}
 
 <h4>{{ message.title }}</h4>
-<p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.timeOfSending }}</em></p>
+<p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.timeOfSending.strftime('%d %b %y %I:%M') }}</em></p>
 <form method="POST" action="{{ url_for('messages_delete', message_id=message.id) }}">
     <input type="submit" value="Poista viesti"/>
 </form>
