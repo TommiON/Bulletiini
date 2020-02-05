@@ -33,7 +33,10 @@ class User(db.Model):
 
     @staticmethod
     def totalNumberOfMessages(user_id):
-        sqlQuery = text("SELECT COUNT(Message.id) FROM Message WHERE Message.authorId = :user").params(user=user_id)
+        # sqlQuery = text("SELECT COUNT(Message.id) FROM Message WHERE Message.authorId = :user").params(user=user_id)
+        sqlQuery = text("   SELECT COUNT(Message.id) FROM Message \
+                            LEFT JOIN Account ON Account.id = Message.authorId \
+                            WHERE Account.id = :user").params(user=user_id)
         result = db.engine.execute(sqlQuery)
         for row in result:
             return row[0]
