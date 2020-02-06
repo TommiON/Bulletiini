@@ -7,7 +7,7 @@ def getLatestMessages(numberToBeDisplayed):
     return Message.query.order_by(desc(Message.timeOfSending)).limit(numberToBeDisplayed).all()
 
 def totalNumberOfMessages():
-    sqlQuery = text("SELECT COUNT(Message.id) FROM Message")
+    sqlQuery = text("SELECT COUNT(message.id) FROM message")
     result = db.engine.execute(sqlQuery)
     for row in result:
         return row[0]
