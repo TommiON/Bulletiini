@@ -1,8 +1,11 @@
 from flask import render_template
 from application import app
-from application.threads.models import Thread
+from application.messages.helpers import getLatestMessages, totalNumberOfMessages
+from application.users.helpers import totalNumberOfPostingUsers
 
 @app.route("/")
 def index():
-    return render_template("threadsList.html", threads=Thread.query.all())
-    # return render_template("index.html")
+    return render_template("frontpage.html", \
+                            latestMessages=getLatestMessages(numberToBeDisplayed=10), \
+                            numberOfMessages=totalNumberOfMessages(), \
+                            numberOfUsers=totalNumberOfPostingUsers())   

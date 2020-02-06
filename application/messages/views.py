@@ -24,7 +24,7 @@ def messages_delete(message_id):
     messageToBeDeleted = Message.query.get(message_id)
     db.session.delete(messageToBeDeleted)
     db.session.commit()
-    return redirect(url_for("messages_list"))
+    return redirect(url_for("index"))
 
 # palauttaa lomakkeen viestin editoimiseen (väliaikainen ratkaisu)
 @app.route("/messages/edit/<message_id>", methods=["GET"])

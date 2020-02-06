@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+    
+<h4>Uusimmat viestit</h4>
+
+<ul>
+    {% for message in latestMessages %}
+    <li>
+        <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
+        käyttäjältä <b> {{ message.sender.username }} </b>
+        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.threadId) }}"> {{ message.threadId }}</a>
+        lähetetty {{ message.timeOfSending.strftime('%d %b %y %I:%M')}}
+    </li>
+    {% endfor %}
+</ul>
+
+<p>Yhteensä Bulletiinissa {{ numberOfMessages }} viestiä {{ numberOfUsers }} käyttäjältä.</p>
+   
+{% endblock %}

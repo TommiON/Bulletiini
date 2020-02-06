@@ -5,7 +5,7 @@
 <h4>{{ thread.title }}</h4>
 <p><em>Aloittanut <b>{{ thread.opener.username }}</b> {{ thread.timeOfOpening }}</em></p>
 <form method="GET" action="{{ url_for('thread_responseForm', thread_id=thread.id) }}">
-    <input type="submit" value="Vastaa tähän ketjuun"/>
+    <input type="submit" value="Vastaa tähän keskusteluketjuun"/>
 </form>
 <ul>
     {% for message in thread.messages %}
