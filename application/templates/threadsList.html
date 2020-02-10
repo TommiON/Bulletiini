@@ -11,7 +11,7 @@
     <li>
         <a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a>,
         aloittanut <b> {{ thread.opener.username }} </b>
-        {{ thread.timeOfOpening.strftime('%d %b %y %I:%M') }}, 
+        {{ thread.time_of_opening.strftime('%d %b %y %I:%M') }}, 
         viestejä {{ thread.totalNumberOfMessages(thread.id)}}
     </li>
     {% endfor %}

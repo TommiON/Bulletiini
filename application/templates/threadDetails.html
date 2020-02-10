@@ -3,7 +3,7 @@
 {% block body %}
 
 <h4>{{ thread.title }}</h4>
-<p><em>Aloittanut <b>{{ thread.opener.username }}</b> {{ thread.timeOfOpening }}</em></p>
+<p><em>Aloittanut <b>{{ thread.opener.username }}</b> {{ thread.time_of_opening }}</em></p>
 <form method="GET" action="{{ url_for('thread_responseForm', thread_id=thread.id) }}">
     <input type="submit" value="Vastaa tähän keskusteluketjuun"/>
 </form>
@@ -12,7 +12,7 @@
     <li>
         <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
         käyttäjältä <b>{{ message.sender.username }}</b>,
-        lähetetty {{ message.timeOfSending.strftime('%d %b %y %I:%M') }}
+        lähetetty {{ message.time_of_sending.strftime('%d %b %y %I:%M') }}
     </li>
     {% endfor %}
 </ul>

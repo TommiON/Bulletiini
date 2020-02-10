@@ -5,16 +5,16 @@
 <h4>Uusimmat viestit</h4>
 
 <ul>
-    {% for message in latestMessages %}
+    {% for message in latest_messages %}
     <li>
         <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
         käyttäjältä <b> {{ message.sender.username }} </b>
-        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.threadId) }}"> {{ message.threadId }}</a>
-        lähetetty {{ message.timeOfSending.strftime('%d %b %y %I:%M')}}
+        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.threadId) }}"> {{ message.thread_id }}</a>
+        lähetetty {{ message.time_of_sending.strftime('%d %b %y %I:%M')}}
     </li>
     {% endfor %}
 </ul>
 
-<p>Yhteensä Bulletiinissa {{ numberOfMessages }} viestiä.</p>
+<p>Yhteensä Bulletiinissa {{ number_of_messages }} viestiä.</p>
    
 {% endblock %}

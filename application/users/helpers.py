@@ -5,7 +5,7 @@ from application.messages.models import Message
 
 # sellaisten käyttäjien määrä, joilla ainakin yksi viesti
 def totalNumberOfPostingUsers():
-    sqlQuery = text("SELECT COUNT(DISTINCT message.authorId) FROM message")
+    sqlQuery = text("SELECT COUNT(DISTINCT message.author_id) FROM message")
     result = db.engine.execute(sqlQuery)
     for row in result:
         return row[0]

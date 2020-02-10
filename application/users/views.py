@@ -24,15 +24,15 @@ def users_create():
     if not form.validate():
         return render_template("userCreationForm.html", form = form)
 
-    newUser = User(form.username.data, form.password.data, False, datetime.now())
-    db.session.add(newUser)
+    new_user = User(form.username.data, form.password.data, False, datetime.now())
+    db.session.add(new_user)
     db.session.commit()
     return redirect(url_for("index"))
 
 @app.route("/users/<user_id>/", methods=["POST"])
 def user_change_admin_status(user_id):
     user = User.query.get(user_id)
-    user.isAdmin = not user.isAdmin
+    user.is_admin = not user.is_admin
     
     db.session.commit()
 

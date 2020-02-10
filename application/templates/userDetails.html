@@ -11,12 +11,12 @@
 </p>
 <p>
     Ylläpitäjän oikeudet: 
-    {% if user.isAdmin == True %} kyllä 
+    {% if user.is_admin == True %} kyllä 
         <form method="POST" action="{{ url_for('user_change_admin_status', user_id=user.id) }}">
             <input type="submit" value="Ota ylläpito-oikeudet pois" />
         </form>
     {% endif %}
-    {% if user.isAdmin == False %} ei 
+    {% if user.is_admin == False %} ei 
         <form method="POST" action="{{ url_for('user_change_admin_status', user_id=user.id) }}">
             <input type="submit" value="Tee käyttäjästä ylläpitäjä" />
         </form>

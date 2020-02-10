@@ -21,8 +21,8 @@ def message_details(message_id):
 @app.route("/messages/delete/<message_id>", methods=["POST"])
 @login_required
 def messages_delete(message_id):
-    messageToBeDeleted = Message.query.get(message_id)
-    db.session.delete(messageToBeDeleted)
+    message_to_be_deleted = Message.query.get(message_id)
+    db.session.delete(message_to_be_deleted)
     db.session.commit()
     return redirect(url_for("index"))
 
@@ -30,7 +30,7 @@ def messages_delete(message_id):
 @app.route("/messages/edit/<message_id>", methods=["GET"])
 @login_required
 def messages_editingForm(message_id):
-    return render_template("messageEditingForm.html", form=MessageForm(), messageId=message_id)
+    return render_template("messageEditingForm.html", form=MessageForm(), message_id=message_id)
 
 # korvaa viestin uudella (editointitoiminnallisuus)
 @app.route("/messages/edit/<message_id>", methods=["POST"])
@@ -39,7 +39,7 @@ def messages_edit(message_id):
     message = Message.query.get(message_id)
     form = MessageForm(request.form)
     if not form.validate():
-        return render_template("messageEditingForm.html", form=MessageForm(), messageId=message_id)
+        return render_template("messageEditingForm.html", form=MessageForm(), message_id=message_id)
     message.title = form.title.data
     message.content = form.content.data
     db.session.commit()

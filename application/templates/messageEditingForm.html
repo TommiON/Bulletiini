@@ -6,7 +6,7 @@
 
 <p><em>(Kömpelö väliaikainen toteutus: otsikko ja sisältö pitää kirjoittaa kokonaan uudelleen. Lopulliseen elegantimpi...)</em></p>
 
-<form method="POST" action="{{ url_for('messages_edit', message_id=messageId) }}">
+<form method="POST" action="{{ url_for('messages_edit', message_id=message_id) }}">
     <table>
         <tr>
             <td>{{ form.title.label }}</td>
