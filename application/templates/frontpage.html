@@ -9,7 +9,7 @@
     <li>
         <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
         käyttäjältä <b> {{ message.sender.username }} </b>
-        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.threadId) }}"> {{ message.thread_id }}</a>
+        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.thread_id) }}"> {{ message.thread_id }}</a>
         lähetetty {{ message.time_of_sending.strftime('%d %b %y %I:%M')}}
     </li>
     {% endfor %}
