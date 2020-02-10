@@ -1,11 +1,11 @@
 # from datetime import datetime
 from application import db
 from sqlalchemy.sql import text
+from application.models import Base
 
-class User(db.Model):
+class User(Base):
     __tablename__ = "account"
     
-    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(30), nullable=False)
     is_admin = db.Column(db.Boolean, nullable=False)

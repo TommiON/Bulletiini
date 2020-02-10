@@ -1,8 +1,9 @@
 from application import db
 from sqlalchemy.sql import text
 
-class Thread(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+from application.models import Base
+
+class Thread(Base):
     title = db.Column(db.String(50), nullable=False)
     time_of_opening= db.Column(db.DateTime(timezone=False))
     author_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
