@@ -7,8 +7,6 @@ Sovellus tarjoaa toiminnallisuuden yksinkertaiselle keskustelufoorumille. Bullet
 
 # Heroku-sovelluksen osoite ja toimivuus
 
-_Toimivuus 7.2.2020: Heroku/Postgres kiukuttelee (jälleen kerran) asioista, jotka paikallisesti toimivat moitteettomasti, ja juuri nyt ei ole aikaa korjata tätä. Ilmeisesti yhteenvetokyselyt aiheuttavat jotain ongelmia, joten osa poluista vastaa virheellä. Korjaantuu varmaankin joskus myöhemmin kun aika riittää..._
-
 Sovelluksen tämänhetkinen työversio löytyy [Herokusta](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella "testi" ja salasanalla "testi". Osa toiminallisuudesta (viestien lukeminen, käyttäjälista) on saatavilla myös ilman kirjautumista.
 
 # Tietokantakaavio
