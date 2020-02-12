@@ -11,7 +11,7 @@
 </p>
 <p>
     Ylläpitäjän oikeudet: 
-    {% if user.is_admin == True %} kyllä 
+    {% if user.is_admin == True %} kyllä
         <form method="POST" action="{{ url_for('user_change_admin_status', user_id=user.id) }}">
             <input type="submit" value="Ota ylläpito-oikeudet pois" />
         </form>

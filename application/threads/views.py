@@ -1,7 +1,7 @@
-from application import app, db
+from application import app, db, login_required
 from flask import render_template, request, redirect, url_for
 from datetime import datetime
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 from application.threads.models import Thread
 from application.messages.models import Message
@@ -20,19 +20,19 @@ def thread_details(thread_id):
 
 # palauttaa lomakkeen uuden ketjun avaamiseksi
 @app.route("/threads/new", methods=["GET"])
-@login_required
+@login_required(role="BASIC")
 def thread_openingForm():
     return render_template("messageOpeningForm.html", form=MessageForm())
 
 # palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
 @app.route("/threads/<thread_id>/new", methods=["GET"])
-@login_required
+@login_required(role="BASIC")
 def thread_responseForm(thread_id):
     return render_template("messageResponseForm.html", form=MessageForm(), thread_id=thread_id)
 
 # luo uuden keskusteluketjun
 @app.route("/threads", methods=["POST"])
-@login_required
+@login_required(role="BASIC")
 def thread_create():
     new_thread = Thread(title="väliaikainen otsikko", time_of_opening=datetime.now(), author_id=current_user.id)
     db.session.add(new_thread)
@@ -48,7 +48,7 @@ def thread_create():
 
 # lisää uuden viestin ketjuun
 @app.route("/threads/<thread_id>", methods=["POST"])
-@login_required
+@login_required(role="BASIC")
 def thread_respond(thread_id):
     form = MessageForm(request.form)
     if not form.validate():

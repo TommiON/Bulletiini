@@ -31,6 +31,12 @@ class User(Base):
     def is_authenticated(self):
         return True
 
+    def roles(self):
+        if self.is_admin:
+            return ["ADMIN", "BASIC"]
+        else:
+            return ["BASIC"]
+
     @staticmethod
     def totalNumberOfMessages(user_id):
         # sqlQuery = text("SELECT COUNT(Message.id) FROM Message WHERE Message.authorId = :user").params(user=user_id)

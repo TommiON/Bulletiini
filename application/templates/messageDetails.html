@@ -4,13 +4,17 @@
 
 <h4>{{ message.title }}</h4>
 <p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.time_of_sending.strftime('%d %b %y %I:%M') }}</em></p>
-<form method="POST" action="{{ url_for('messages_delete', message_id=message.id) }}">
-    <input type="submit" value="Poista viesti"/>
-</form>
-<form method="GET" action="{{ url_for('messages_editingForm', message_id=message.id) }}">
-    <input type="submit" value="Muokkaa viestiä"/>
-</form>
 
+{% if current_user.id == message.author_id %}
+
+    <form method="POST" action="{{ url_for('messages_delete', message_id=message.id) }}">
+        <input type="submit" value="Poista viesti"/>
+    </form>
+    <form method="GET" action="{{ url_for('messages_editingForm', message_id=message.id) }}">
+        <input type="submit" value="Muokkaa viestiä"/>
+    </form>
+
+{% endif %}
 
 <p>{{ message.content }} </p>
 
