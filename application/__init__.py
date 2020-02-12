@@ -51,7 +51,7 @@ from application.authentication import views
 from application.users import models, views
 from application.messages import models, views
 from application.threads import models, views
-
+from application.statistics import views
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -60,4 +60,4 @@ def load_user(user_id):
 try: 
     db.create_all()
 except:
-    pass
+    passx

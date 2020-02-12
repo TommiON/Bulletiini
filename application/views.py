@@ -7,4 +7,5 @@ from application.users.helpers import totalNumberOfPostingUsers
 def index():
     return render_template("frontpage.html", \
                             latest_messages=getLatestMessages(number_to_be_displayed=10), \
-                            number_of_messages=totalNumberOfMessages())   
+                            number_of_messages=totalNumberOfMessages(),
+                            number_of_users=totalNumberOfPostingUsers())
