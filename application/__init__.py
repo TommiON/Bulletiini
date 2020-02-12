@@ -14,7 +14,7 @@ else:
 
 db = SQLAlchemy(app)
 
-# sovelluksen perusrakenne rakentuu tässä
+# sovelluksen perusrakenne
 from application import views
 from application.authentication import views
 from application.users import models, views
