@@ -2,10 +2,31 @@
   
 {% block body %}
     
-<h4>Tilastoja</h4>
-
-<p>Käyttäjiä <b>{{ number_of_users }}</b>, joista <b>{{ number_of_posters }}</b> aktiivisia (kirjoittanut ainakin yhden viestin).</p>
-
-<p>Viestejä <b>{{ number_of_messages }}</b> yhteensä <b>{{ number_of_threads }}</b> eri ketjussa.</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="row">Tilastoja</th>
+          <th scope="row"></th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr>
+        <td>Käyttäjiä</td>
+        <td>{{ number_of_users }}</td>
+      </tr>
+      <tr>
+        <td>Aktiivisia käyttäjiä (kirjoittanut ainakin yhden viestin)</td>
+        <td>{{ number_of_posters }}</td>
+      </tr>
+      <tr>
+        <td>Viestejä</td>
+        <td>{{ number_of_messages }}</td>
+      </tr>
+      <tr>
+        <td>Keskusteluketjuja</td>
+        <td>{{ number_of_threads }}</td>
+      </tr>
+    </tbody>
+  </table>
 
 {% endblock %}
