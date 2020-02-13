@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+
+<h4>Lisää uusi aihe</h4>
+<form method="POST" action="{{ url_for('topic_create') }}">
+    <table>
+        <tr>
+            <td>{{ form.name.label }}</td>
+            <td>{{ form.name }}</td>
+            <td>
+                <ul>
+                  {% for error in form.name.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Lisää aihe"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}

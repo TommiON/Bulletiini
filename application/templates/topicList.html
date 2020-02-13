@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+    
+<form method="GET" action="{{ url_for('topic_creation_form') }}">
+    <input type="submit" value="Luo uusi aihe"/>
+</form>
+<h4>Aihepiirit</h4>
+<ul>
+    {% for topic in topics %}
+     <li>{{ topic.name }}</li>
+    {% endfor %}
+</ul>
+   
+{% endblock %}

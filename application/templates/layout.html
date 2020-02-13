@@ -15,19 +15,20 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('users_creationForm') }}">Luo käyttäjätunnus</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ url_for('thread_list') }}">Keskustelut</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('topics_list') }}">Aihepiirit</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url_for('users_list') }}">Käyttäjät</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('users_creationForm') }}">Luo käyttäjätunnus</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="{{ url_for('statistics') }}">Tilastoja</a>
                 </li>
-                
-                
               </ul>
               <div class="form-inline mt-2 mt-md-0">
               {% if current_user.is_authenticated %}
