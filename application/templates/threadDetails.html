@@ -2,19 +2,41 @@
   
 {% block body %}
 
-<h4>{{ thread.title }}</h4>
-<p><em>Aloittanut <b>{{ thread.opener.username }}</b> {{ thread.time_of_opening }}</em></p>
-<form method="GET" action="{{ url_for('thread_responseForm', thread_id=thread.id) }}">
-    <input type="submit" value="Vastaa tähän keskusteluketjuun"/>
-</form>
-<ul>
-    {% for message in thread.messages %}
-    <li>
-        <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
-        käyttäjältä <b>{{ message.sender.username }}</b>,
-        lähetetty {{ message.time_of_sending.strftime('%d %b %y %I:%M') }}
-    </li>
-    {% endfor %}
-</ul>
+<h4>{{ thread.title }}, yhteensä {{ thread.totalNumberOfMessages(thread.id)}} viestiä</h4>
+<a href="{{ url_for('thread_responseForm', thread_id=thread.id) }}">Vastaa tähän keskusteluketjuun</a>
+<br></br>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="row">Otsikko</th>
+          <th scope="row">Lähettäjä</th>
+          <th scope="row">Lähetetty</th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for message in thread.messages %}
+        <tr>
+            <td> <a href="{{ url_for('message_details', message_id=message.id) }}"><b>{{ message.title }}</b></a></td>
+            <td><b>{{ message.sender.username }}</b></td>
+            <td><b>{{ message.time_of_sending.strftime('%d %b %y %I:%M') }}</b></td>
+        </tr>
+        <tr>
+          <td>
+            {{ message.content }}
+          </td>
+          <td>
+            {% if current_user.id == message.author_id %}
+            <a href="{{ url_for('messages_delete', message_id=message.id) }}">poista</a>
+            {% endif %}
+          </td>
+          <td>
+            {% if current_user.id == message.author_id %}
+            <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">muokkaa</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

@@ -31,7 +31,7 @@ def users_create():
     new_user = User(form.username.data, form.password.data, False, datetime.now())
     db.session.add(new_user)
     db.session.commit()
-    return redirect(url_for("index"))
+    return render_template("userList.html", users=User.query.all()) 
 
 # admin-oikeuksien asetus ja poisotto, vaatii admin-oikeudet
 @app.route("/users/<user_id>/", methods=["POST"])

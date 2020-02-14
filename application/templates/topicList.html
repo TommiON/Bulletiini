@@ -1,15 +1,25 @@
 {% extends "layout.html" %}
   
 {% block body %}
+
+<a href="{{ url_for('topic_creation_form') }}">Luo uusi aihe</a>
+<br></br>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="row">Aihepiirit</th>
+          <th scope="row"></th>
+        </tr>
+      </thead>
+    <tbody>
+        {% for topic in topics %}
+        <tr>
+            <td>{{ topic.name }}</td>
+            <td><a href="{{ url_for('topics_delete', topic_id=topic.id) }}">poista</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
     
-<form method="GET" action="{{ url_for('topic_creation_form') }}">
-    <input type="submit" value="Luo uusi aihe"/>
-</form>
-<h4>Aihepiirit</h4>
-<ul>
-    {% for topic in topics %}
-     <li>{{ topic.name }}</li>
-    {% endfor %}
-</ul>
-   
 {% endblock %}
