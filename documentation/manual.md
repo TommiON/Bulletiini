@@ -12,7 +12,7 @@ _Ohjeet myös localhost-asentamiseen myöhemmin_
 
 Sovelluksen perustoiminnot löytyvät yläpalkista:
 
-![](documentation/bulletin_ui.png)
+![](bulletin_ui.png)
 
 * _Bulletiini_ palauttaa kaikista näkymistä takaisin etusivulle, jossa näytetään viisi tuoreinta 10 tuoreinta viestiä.
 * _Luo käyttäjätunnus_ -kohdasta pääsee luomaan käyttäjätunnuksen. Luodulle käyttäjätunnukselle annetaan perustasoiset oikeudet.
