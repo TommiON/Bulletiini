@@ -2,8 +2,10 @@
   
 {% block body %}
 
+{% if current_user.is_admin == True %}
 <a href="{{ url_for('topic_creation_form') }}">Luo uusi aihe</a>
 <br></br>
+{% endif %}
 
 <table class="table">
     <thead class="thead-dark">
@@ -15,8 +17,14 @@
     <tbody>
         {% for topic in topics %}
         <tr>
-            <td>{{ topic.name }}</td>
-            <td><a href="{{ url_for('topics_delete', topic_id=topic.id) }}">poista</a></td>
+            <td>
+              {{ topic.name }}
+            </td>
+            <td>
+              {% if current_user.is_admin == True %}
+              <a href="{{ url_for('topics_delete', topic_id=topic.id) }}">poista</a>
+              {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </tbody>

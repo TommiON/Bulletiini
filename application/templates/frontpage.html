@@ -7,10 +7,10 @@
 <ul>
     {% for message in latest_messages %}
     <li>
-        <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
+        <b><a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a></b>
         käyttäjältä <b> {{ message.sender.username }} </b>
-        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.thread_id) }}"> {{ message.thread_id }}</a>
-        lähetetty {{ message.time_of_sending.strftime('%d %b %y %I:%M')}}
+        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.thread_id) }}"> {{ message.thread_id }}</a>,
+        lähetetty {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M')}}
     </li>
     {% endfor %}
 </ul>

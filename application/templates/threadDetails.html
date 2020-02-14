@@ -11,28 +11,37 @@
           <th scope="row">Otsikko</th>
           <th scope="row">Lähettäjä</th>
           <th scope="row">Lähetetty</th>
+          <th scope="row"></th>
+          <th scope="row"></th>
         </tr>
       </thead>
     <tbody>
         {% for message in thread.messages %}
         <tr>
-            <td> <a href="{{ url_for('message_details', message_id=message.id) }}"><b>{{ message.title }}</b></a></td>
-            <td><b>{{ message.sender.username }}</b></td>
-            <td><b>{{ message.time_of_sending.strftime('%d %b %y %I:%M') }}</b></td>
+            <td>
+              <a href="{{ url_for('message_details', message_id=message.id) }}"><b>{{ message.title }}</b></a>
+            </td>
+            <td>
+              <b>{{ message.sender.username }}</b>
+            </td>
+            <td>
+              <b>{{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}</b>
+            </td>
+            <td>
+              {% if current_user.id == message.author_id %}
+              <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">muokkaa</a>
+              {% endif %}
+            </td>
+            <td>
+              {% if current_user.id == message.author_id %}
+              <a href="{{ url_for('messages_delete', message_id=message.id) }}">poista</a>
+              {% endif %}
+            </td>
+            
         </tr>
         <tr>
           <td>
             {{ message.content }}
-          </td>
-          <td>
-            {% if current_user.id == message.author_id %}
-            <a href="{{ url_for('messages_delete', message_id=message.id) }}">poista</a>
-            {% endif %}
-          </td>
-          <td>
-            {% if current_user.id == message.author_id %}
-            <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">muokkaa</a>
-            {% endif %}
           </td>
         </tr>
         {% endfor %}

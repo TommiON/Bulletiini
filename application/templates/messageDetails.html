@@ -3,18 +3,14 @@
 {% block body %}
 
 <h4>{{ message.title }}</h4>
-<p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.time_of_sending.strftime('%d %b %y %I:%M') }}</em></p>
+<p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}</em></p>
 
 {% if current_user.id == message.author_id %}
-
-    <form method="POST" action="{{ url_for('messages_delete', message_id=message.id) }}">
-        <input type="submit" value="Poista viesti"/>
-    </form>
-    <form method="GET" action="{{ url_for('messages_editingForm', message_id=message.id) }}">
-        <input type="submit" value="Muokkaa viestiä"/>
-    </form>
-
+    <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">Muokkaa viestiä</a><br>
+    <a href="{{ url_for('messages_delete', message_id=message.id) }}">Poista viesti</a>
 {% endif %}
+
+<br></br>
 
 <p>{{ message.content }} </p>
 

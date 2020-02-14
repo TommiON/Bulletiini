@@ -59,3 +59,10 @@ def thread_respond(thread_id):
     return render_template("threadDetails.html", thread=Thread.query.get(thread_id))
 
 # poistaa ketjun
+@app.route("/threads/delete/<thread_id>", methods=["GET"])
+@login_required(role="BASIC")
+def threads_delete(thread_id):
+    thread_to_be_deleted = Thread.query.get(thread_id)
+    db.session.delete(thread_to_be_deleted)
+    db.session.commit()
+    return render_template("threadsList.html", threads=Thread.query.all())

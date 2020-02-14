@@ -19,7 +19,7 @@
         <tr>
             <td><a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a></td>
             <td>{{ thread.opener.username }}</td>
-            <td>{{ thread.time_of_opening.strftime('%d %b %y %I:%M') }}</td>
+            <td>{{ thread.time_of_opening.strftime('%d.%m %Y klo %I:%M') }}</td>
             <td>{{ thread.totalNumberOfMessages(thread.id)}}</td>
         </tr>
         {% endfor %}

@@ -11,7 +11,7 @@
     <li>
         <a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a>
         käyttäjältä <b> {{ message.sender.username }} </b>,
-        lähetetty {{ message.time_of_sending }}
+        lähetetty {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}
     </li>
     {% endfor %}
 </ul>

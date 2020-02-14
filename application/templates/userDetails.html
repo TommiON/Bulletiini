@@ -4,7 +4,7 @@
 
 <h4>{{ user.username }}</h4>
 <p>
-    Liittynyt: {{ user.joined.strftime('%d %b %y') }}
+    Liittynyt: {{ user.joined.strftime('%d.%m.%Y') }}
 </p>
 <p>
     Viestejä: {{ user.totalNumberOfMessages(user.id) }}
