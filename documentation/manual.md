@@ -11,6 +11,9 @@ _Ohjeet myös localhost-asentamiseen myöhemmin_
 ## Sovelluksen perustoiminnot
 
 Sovelluksen perustoiminnot löytyvät yläpalkista:
+
+![](documentation/bulletin_ui.png)
+
 * _Bulletiini_ palauttaa kaikista näkymistä takaisin etusivulle, jossa näytetään viisi tuoreinta 10 tuoreinta viestiä.
 * _Luo käyttäjätunnus_ -kohdasta pääsee luomaan käyttäjätunnuksen. Luodulle käyttäjätunnukselle annetaan perustasoiset oikeudet.
 * _Keskustelut_ -välilehti näyttää kaikki Bulletiinin keskusteluketjut. Yksittäistä ketjunnimeä klikkaamalla saa näkyville kyseisen ketjun viestit. Käyttäjä voi muokata ja poistaa omia viestejään. 
