@@ -1,5 +1,7 @@
 from application import db
 from application.models import Base
+from application.threads.models import Thread
+from application.topics.models import Topic
 
 Thread_topic = db.Table("Thread_topic", 
                         Base.metadata,
