@@ -47,6 +47,7 @@ def login_required(_func=None, *, role="ANY"):
 
 # sovelluksen perusrakenne
 from application import views
+from application.associations import Thread_topic
 from application.authentication import views
 from application.users import models, views
 from application.messages import models, views

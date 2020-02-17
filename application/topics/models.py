@@ -1,16 +1,11 @@
 from application import db
 from sqlalchemy.sql import text
 from application.models import Base
-
-#Thread_topic = db.Table("Thread_topic", 
-#                        Base.metadata,
-#                        db.Column("thread_id", db.Integer, db.ForeignKey("thread.id")), 
-#                        db.Column("topic_id", db.Integer, db.ForeignKey("topic.id"))
-#)
+from application.associations import Thread_topic
 
 class Topic(Base):
     name = db.Column(db.String(50), nullable=False)
-    # threads = db.relationship("Thread", secondary=Thread_topic, backref="topic")
+    threads = db.relationship("Thread", secondary="Thread_topic", back_populates="topics", lazy=False)
     
     def __init__(self, name):
         self.name = name

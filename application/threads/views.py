@@ -4,8 +4,10 @@ from datetime import datetime
 from flask_login import current_user
 
 from application.threads.models import Thread
+from application.threads.forms import new_thread_form
 from application.messages.models import Message
 from application.messages.forms import MessageForm
+from application.topics.models import Topic
 
 # tulostaa listan kaikista keskusteluketjuista
 @app.route("/threads", methods=["GET"])
@@ -22,7 +24,8 @@ def thread_details(thread_id):
 @app.route("/threads/new", methods=["GET"])
 @login_required(role="BASIC")
 def thread_openingForm():
-    return render_template("messageOpeningForm.html", form=MessageForm())
+    return render_template("thread_creation_form.html", form=new_thread_form())
+    # return render_template("messageOpeningForm.html", form=MessageForm())
 
 # palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
 @app.route("/threads/<thread_id>/new", methods=["GET"])
@@ -34,7 +37,13 @@ def thread_responseForm(thread_id):
 @app.route("/threads", methods=["POST"])
 @login_required(role="BASIC")
 def thread_create():
-    new_thread = Thread(title="väliaikainen otsikko", time_of_opening=datetime.now(), author_id=current_user.id)
+    # väliaikainen toteutus, kokeillaan miten many-to-manyt toimii
+    topics = []
+    topics.append(Topic.query.get(1))
+    topics.append(Topic.query.get(2))
+    ##
+
+    new_thread = Thread(title="väliaikainen otsikko", time_of_opening=datetime.now(), author_id=current_user.id, topics=topics)
     db.session.add(new_thread)
     db.session.commit()
     form = MessageForm(request.form)
@@ -42,6 +51,7 @@ def thread_create():
         return render_template("messageOpeningForm.html", form = form)
     new_message = Message(title=form.title.data, content=form.content.data, time_of_sending=datetime.now(), author_id=current_user.id, thread_id=new_thread.id)
     new_thread.title = new_message.title
+
     db.session.add(new_message)
     db.session.commit()
     return render_template("threadDetails.html", thread = new_thread)

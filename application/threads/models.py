@@ -1,24 +1,20 @@
 from application import db
 from sqlalchemy.sql import text
 from application.models import Base
-
-#Thread_topic = db.Table("Thread_topic", 
-#                        Base.metadata,
-#                        db.Column("thread_id", db.Integer, db.ForeignKey("thread.id")), 
-#                        db.Column("topic_id", db.Integer, db.ForeignKey("topic.id"))
-#)
+from application.associations import Thread_topic
 
 class Thread(Base):
     title = db.Column(db.String(50), nullable=False)
     time_of_opening = db.Column(db.DateTime(timezone=False))
     author_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
     messages = db.relationship("Message", backref='thread', lazy=True)
-    #topics = db.relationship("Topic", secondary=Thread_topic, backref='thread')
+    topics = db.relationship("Topic", secondary="Thread_topic", back_populates="threads", lazy=False)
 
-    def __init__(self, title, time_of_opening, author_id):
+    def __init__(self, title, time_of_opening, author_id, topics):
         self.title = title
         self.time_of_opening = time_of_opening
         self.author_id = author_id
+        self.topics = topics
 
     def get_id(self):
         return self.id

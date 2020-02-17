@@ -10,6 +10,7 @@
         <tr>
           <th scope="row">Keskusteluketjut</th>
           <th scope="row">Aloittaja</th>
+          <th scope="row">Aihepiirit</th>
           <th scope="row">Aloitettu</th>
           <th scope="row">Viestejä</th>
         </tr>
@@ -19,6 +20,11 @@
         <tr>
             <td><a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a></td>
             <td>{{ thread.opener.username }}</td>
+            <td>
+              {% for topic in thread.topics %}
+              {{ topic.name }} 
+              {% endfor %}
+            </td>
             <td>{{ thread.time_of_opening.strftime('%d.%m %Y klo %I:%M') }}</td>
             <td>{{ thread.totalNumberOfMessages(thread.id)}}</td>
         </tr>
