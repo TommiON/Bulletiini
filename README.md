@@ -7,5 +7,5 @@ Helsingin yliopiston Tietokantaprojekti-kurssin harjoitustyö. Sovellus tarjoaa 
 
 [Tietokannan kuvaus](documentation/database.md)
 
-
+[Puutteita ja kehityskohteita](documentation/puutteet.md)
 
