@@ -6,9 +6,9 @@ from application.associations import Thread_topic
 class Thread(Base):
     title = db.Column(db.String(50), nullable=False)
     time_of_opening = db.Column(db.DateTime(timezone=False))
-    author_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
-    messages = db.relationship("Message", backref='thread', lazy=True)
-    topics = db.relationship("Topic", secondary="Thread_topic", back_populates="threads", lazy=True)
+    author_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    messages = db.relationship('Message', backref='thread', lazy=True)
+    topics = db.relationship('Topic', secondary='Thread_topic', back_populates='threads')
 
     def __init__(self, title, time_of_opening, author_id, topics):
         self.title = title

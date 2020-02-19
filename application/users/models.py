@@ -4,14 +4,14 @@ from sqlalchemy.sql import text
 from application.models import Base
 
 class User(Base):
-    __tablename__ = "account"
+    __tablename__ = 'account'
     
     username = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(30), nullable=False)
     is_admin = db.Column(db.Boolean, nullable=False)
     joined = db.Column(db.DateTime, default=db.func.current_timestamp())
-    messages = db.relationship("Message", backref='sender', lazy=True)
-    threads = db.relationship("Thread", backref='opener', lazy=True)
+    messages = db.relationship('Message', backref='sender', lazy=True)
+    threads = db.relationship('Thread', backref='opener', lazy=True)
 
     def __init__(self, username, password, is_admin, joined):
         self.username = username
