@@ -1,8 +1,10 @@
-### Keskeiset käsitteet
+# Käyttötapaukset
 
-Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread) ja jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
+Sovelluksen avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread) ja jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
 
-### Käyttötapauksia
+Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
+
+## Käyttäjähallinta
 
 * Käyttäjä voi luoda itselleen käyttäjätunnuksen. Uusilla käyttäjätunnuksilla ei ole ylläpitäjän oikeuksia.
 
@@ -16,6 +18,15 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 
 ```DELETE FROM account WHERE id=?```
 
+* Lista kaikista rekisteröityneistä käyttäjistä.
+
+```SELECT * FROM account```
+
+* Yksittäisen käyttäjän tarkemmat tiedot.
+
+```SELECT * FROM account WHERE id=?```
+
+## Keskusteluketjut
 
 
 --
