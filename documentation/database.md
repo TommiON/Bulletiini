@@ -1,7 +1,7 @@
 # Tietokannan kuvaus
 
 
-## Taulujen SQL-lauseet
+## Taulujen CREATE TABLE -lauseet
 
 Käyttäjä:
 ```
@@ -16,6 +16,7 @@ CREATE TABLE account (
 )
 ```
 
+
 Aihepiiri:
 ```
 CREATE TABLE topic (
@@ -24,6 +25,7 @@ CREATE TABLE topic (
 	PRIMARY KEY (id)
 )
 ```
+
 
 Keskusteluketju:
 ```
@@ -36,6 +38,7 @@ CREATE TABLE thread (
 	FOREIGN KEY(author_id) REFERENCES account (id)
 )
 ```
+
 
 Viesti:
 ```
@@ -51,6 +54,7 @@ CREATE TABLE message (
 	FOREIGN KEY(thread_id) REFERENCES thread (id)
 )
 ```
+
 
 Keskusteluketjun ja aihepiirin liitostaulu:
 ```
