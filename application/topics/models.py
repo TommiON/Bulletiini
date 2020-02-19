@@ -5,7 +5,7 @@ from application.associations import Thread_topic
 
 class Topic(Base):
     name = db.Column(db.String(50), nullable=False)
-    threads = db.relationship("Thread", secondary="Thread_topic", back_populates="topics", lazy=False)
+    threads = db.relationship("Thread", secondary="Thread_topic", back_populates="topics", lazy=True)
     
     def __init__(self, name):
         self.name = name
