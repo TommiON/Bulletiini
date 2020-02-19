@@ -1,6 +1,6 @@
 # Käyttötapaukset
 
-Sovelluksen avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread), jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (User), joista osa voi olla ylläpito-oikeuksin varustettuja.
+Sovelluksen avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread), jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (tietokannassa Account), joista osa voi olla ylläpito-oikeuksin varustettuja.
 
 Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
