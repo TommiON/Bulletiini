@@ -4,6 +4,18 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 
 ### Käyttötapauksia
 
+* Käyttäjä voi luoda itselleen käyttäjätunnuksen. Uusilla käyttäjätunnuksilla ei ole ylläpitäjän oikeuksia.
+```INSERT INTO account(username, password, is_admin, joined) VALUES (?, ? , false, current_timestamp())```
+
+* Ylläpito-oikeuksin varustettu käyttäjä voi antaa tai ottaa pois toisen käyttäjän ylläpito-oikeudet.
+```UPDATE account SET is_admin=? WHERE id=?```
+
+* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa toisen käyttäjätunnuksen. _ei vielä toteutettu_
+```DELETE FROM account WHERE id=?```
+
+
+
+--
 * Käyttäjä voi aloittaa uuden keskusteluketjun ja kirjoittaa sen ensimmäisen viestin. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita. _Aiheiden valitsemistoiminnallisuus vielä kesken_
 * Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only -lista, jonka sisältöö ei voi vaikuttaa.
 * Keskusteluketjuja voi selata aikajärjestyksessä tai suodattaa niitä aiheiden mukaan. _Aihepiirien mukaan suodattaminen vielä kesken_
