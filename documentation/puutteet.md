@@ -1,4 +1,4 @@
-#Puutteet ja kehityskohteet
+# Puutteet ja kehityskohteet
 
 Ajanpuutteen vuoksi sovelluksesta jäi toteuttamatta muutamia melko ilmeisiä toimintoja ja osa-alueita:
 
