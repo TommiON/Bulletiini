@@ -5,12 +5,15 @@ Avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Th
 ### Käyttötapauksia
 
 * Käyttäjä voi luoda itselleen käyttäjätunnuksen. Uusilla käyttäjätunnuksilla ei ole ylläpitäjän oikeuksia.
+
 ```INSERT INTO account(username, password, is_admin, joined) VALUES (?, ? , false, current_timestamp())```
 
 * Ylläpito-oikeuksin varustettu käyttäjä voi antaa tai ottaa pois toisen käyttäjän ylläpito-oikeudet.
+
 ```UPDATE account SET is_admin=? WHERE id=?```
 
 * Ylläpito-oikeuksin varustettu käyttäjä voi poistaa toisen käyttäjätunnuksen. _ei vielä toteutettu_
+
 ```DELETE FROM account WHERE id=?```
 
 
