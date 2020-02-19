@@ -3,9 +3,9 @@ Helsingin yliopiston Tietokantaprojekti-kurssin harjoitustyö. Sovellus tarjoaa 
 
 [Ohjeet asennukseen ja käyttöön](https://github.com/TommiON/Bulletiini/blob/master/documentation/manual.md).
 
-[Tietokannan kuvaus](documentation/database.md)
-
 [Käsite- ja käyttötapausdokumentti](https://github.com/TommiON/Bulletiini/blob/master/documentation/usecases.md). 
+
+[Tietokannan kuvaus](documentation/database.md)
 
 
 
