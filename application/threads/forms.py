@@ -7,7 +7,8 @@ class new_thread_form(FlaskForm):
     content = TextAreaField(label="Viesti", validators=[validators.Length(max=5000)])
     topics = SelectField(
         label='Aihepiirit',
-        choices = [(topic.id, topic.name) for topic in Topic.query.all()]
+        choices =[(1,1)]
+        # choices = [(topic.id, topic.name) for topic in Topic.query.all()]
     )
 
     class Meta:

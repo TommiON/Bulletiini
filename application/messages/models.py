@@ -1,7 +1,7 @@
 from application import db
-from application.models import Base
 
-class Message(Base):
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(5000), nullable=True)
     time_of_sending = db.Column(db.DateTime(timezone=False))
