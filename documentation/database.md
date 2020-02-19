@@ -1,5 +1,8 @@
 # Tietokannan kuvaus
 
+## Tietokantakaavio
+
+![](Tietokantakaavio.png)
 
 ## Taulujen CREATE TABLE -lauseet
 
