@@ -64,7 +64,7 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(message.id) FROM message```
 
-* Uusimpien x:n viestin (nykytoteutuksessa 10:n) näyttäminen sovelluksen etusivulla. _mistäs SQL:n saa selville?_
+* Uusimpien x:n viestin (nykytoteutuksessa 10:n) näyttäminen sovelluksen etusivulla.
 
 ```SELECT * FROM message ORDER BY id DESC LIMIT 10```
 
