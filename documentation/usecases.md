@@ -64,9 +64,7 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(message.id) FROM message```
 
-* Uusimpien x:n viestin (nykytoteutuksessa 10:n) viestin näyttäminen sovelluksen etusivulla.
-
-```mistäs SQL:n saa selville?
+* Uusimpien x:n viestin (nykytoteutuksessa 10:n) viestin näyttäminen sovelluksen etusivulla. _mistäs SQL:n saa selville?_
 
 
 
