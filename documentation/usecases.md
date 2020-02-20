@@ -54,7 +54,17 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 ## Aihepiirit
 
-* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only -lista, jonka sisältöö ei voi vaikuttaa.
+* Kaikki käyttäjät voivat katsella listaa mahdollisista aihepiireistä.
+
+```SELECT * from topic```
+
+* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä aiheita.
+
+```ÌNSERT INTO topic(name) VALUES(?)```
+
+* Ylläpito-oikeuksien varustettu käyttäjä voi poistaa aiheita.
+
+```DELETE FROM topic WHERE id=?```
 
 ## Tilastoja ja yhteenvetokyselyjä
 
