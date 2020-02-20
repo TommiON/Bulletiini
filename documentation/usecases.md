@@ -44,9 +44,9 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 * Viestilistasta voi avata yksittäisen viestin, jolloin pääsee näkemään sen varsinaisen sisällön. Jos käyttäjä avaa oman viestinsä, tässä näkymässä pääsee myös muokkaamaan viestiä tai poistamaan sen.
 
-```SELECT * FROM message WHERE id=?
+```SELECT * FROM message WHERE id=?```
 
---
+
 * Käyttäjä voi aloittaa uuden keskusteluketjun ja kirjoittaa sen ensimmäisen viestin. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita. _Aiheiden valitsemistoiminnallisuus vielä kesken_
 * Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only -lista, jonka sisältöö ei voi vaikuttaa.
 * Keskusteluketjuja voi selata aikajärjestyksessä tai suodattaa niitä aiheiden mukaan. _Aihepiirien mukaan suodattaminen vielä kesken_
