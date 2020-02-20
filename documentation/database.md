@@ -6,7 +6,7 @@
 
 ## Taulujen CREATE TABLE -lauseet
 
-Käyttäjä:
+Käyttäjä (User-entiteetin nimi tietokantatauluna on Account):
 ```
 CREATE TABLE account (
 	id INTEGER NOT NULL, 
