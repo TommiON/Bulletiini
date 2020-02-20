@@ -56,7 +56,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 * Ylläpito-oikeuksien varustettu käyttäjä voi lisätä, poistaa ja muokata aiheita. Tavallisille käyttäjille ne ovat kuitenkin vain read-only -lista, jonka sisältöö ei voi vaikuttaa.
 
-## Tilastoja ja ylläpitokyselyjä
+## Tilastoja ja yhteenvetokyselyjä
 
 Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, vaan tuottavat automaattisesti tietoa sovelluksen eri näkymiin.
 
@@ -64,7 +64,9 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(message.id) FROM message```
 
-* Uusimpien x:n viestin (nykytoteutuksessa 10:n) viestin näyttäminen sovelluksen etusivulla. _mistäs SQL:n saa selville?_
+* Uusimpien x:n viestin (nykytoteutuksessa 10:n) näyttäminen sovelluksen etusivulla. _mistäs SQL:n saa selville?_
+
+```SELECT * FROM message ORDER BY id DESC LIMIT 10```
 
 
 
