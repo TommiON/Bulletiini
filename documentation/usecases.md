@@ -60,7 +60,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, vaan tuottavat automaattisesti tietoa sovelluksen eri näkymiin.
 
-* Viestin kokonaismäärän näyttäminen etusivulla ja tilastosivulla.
+* Viestien kokonaismäärän näyttäminen etusivulla ja tilastosivulla.
 
 ```SELECT COUNT(message.id) FROM message```
 
