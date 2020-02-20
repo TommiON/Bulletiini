@@ -42,6 +42,10 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 ## Viestit
 
+* Lista kaikista viesteistä. (Toimintoa ei tällä hetkellä käytetä sovelluksessa tällaisenaan mihinkään, mutta se on kuitenkin aiemman kehityksen tuloksena olemassa eikä poistettu.)
+
+```SELECT * FROM message```
+
 * Viestilistasta voi avata yksittäisen viestin, jolloin pääsee näkemään sen varsinaisen sisällön. Jos käyttäjä avaa oman viestinsä, tässä näkymässä pääsee myös muokkaamaan viestiä tai poistamaan sen.
 
 ```SELECT * FROM message WHERE id=?```
