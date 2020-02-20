@@ -68,6 +68,14 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT * FROM message ORDER BY id DESC LIMIT 10```
 
+* Käyttäjien määrä.
+
+```SELECT COUNT(account.id) FROM account```
+
+* Ainakin yhden viestin julkaisseiden käyttäjien määrä.
+
+```SELECT COUNT(DISTINCT message.author_id) FROM message```
+
 
 
 * Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Käyttäjä voi siis muokata viestinsä otsikkoa ja sisältöä sen jälkeen kun se on lähetetty ja myös poistaa koko viestin. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
