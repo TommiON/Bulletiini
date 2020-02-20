@@ -50,8 +50,8 @@ from application import views
 from application.authentication import views
 from application.users import models, views
 from application.messages import models, views
-from application.threads import models, views
 from application.topics import models, views
+from application.threads import models, views
 from application.statistics import views
 from application.associations import Thread_topic
 

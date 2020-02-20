@@ -24,7 +24,9 @@ def thread_details(thread_id):
 @app.route("/threads/new", methods=["GET"])
 @login_required(role="BASIC")
 def thread_openingForm():
-    return render_template("thread_creation_form.html", form=new_thread_form())
+    form = new_thread_form()
+    form.topics = [(t.id, t.name) for t in Topic.query.all()]
+    return render_template("thread_creation_form.html", form=form)
     # return render_template("messageOpeningForm.html", form=MessageForm())
 
 # palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
@@ -38,14 +40,16 @@ def thread_responseForm(thread_id):
 @login_required(role="BASIC")
 def thread_create():
     # väliaikainen toteutus, kokeillaan miten many-to-manyt toimii
-    topics = []
-    topics.append(Topic.query.get(1))
-    topics.append(Topic.query.get(2))
+    # topics = []
+    # topics.append(Topic.query.get(1))
+    # topics.append(Topic.query.get(2))
     ##
 
+    topics = []
     new_thread = Thread(title="väliaikainen otsikko", time_of_opening=datetime.now(), author_id=current_user.id, topics=topics)
     db.session.add(new_thread)
     db.session.commit()
+
     form = MessageForm(request.form)
     if not form.validate():
         return render_template("messageOpeningForm.html", form = form)
