@@ -38,7 +38,8 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 * Uuden keskusteluketjun luominen. Tämä käyttötapaus ei ilmene koskaan yksinään, vaan yhdessä viestin luomisen kanssa.
 
-```INSERT INTO thread(id, title, time_of_opening) VALUES(?, ?, current_timestamp())
+```INSERT INTO thread(id, title, time_of_opening) VALUES(?, ?, current_timestamp())```
+
 
 --
 * Käyttäjä voi aloittaa uuden keskusteluketjun ja kirjoittaa sen ensimmäisen viestin. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita. _Aiheiden valitsemistoiminnallisuus vielä kesken_
