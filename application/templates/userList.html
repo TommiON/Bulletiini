@@ -10,6 +10,7 @@
         <tr>
           <th scope="row">Käyttäjänimi</th>
           <th scope="row">Ylläpitäjän oikeudet</th>
+          <th></th>
         </tr>
       </thead>
     <tbody>
@@ -24,6 +25,11 @@
                 {% endif %}
                 {% if user.is_admin == False %}
                 ei
+                {% endif %}
+            </td>
+            <td>
+                {% if current_user.is_admin == True %}
+                    <a href="{{ url_for('users_delete', user_id=user.id) }}">poista tämä tunnus</a>
                 {% endif %}
             </td>
         </tr>
