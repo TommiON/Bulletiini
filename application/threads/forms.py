@@ -9,7 +9,7 @@ class MultiCheckboxField(SelectMultipleField):
 class new_thread_form(FlaskForm):
     title = StringField(label="Otsikko", validators=[validators.InputRequired(), validators.Length(min=1), validators.Length(max=50)])
     content = TextAreaField(label="Viesti", validators=[validators.Length(max=5000)])
-    topics = MultiCheckboxField('Valintoja', coerce=int)
+    topics = MultiCheckboxField(coerce=int)
     
     class Meta:
         csrf = False
