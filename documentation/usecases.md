@@ -14,7 +14,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 ```UPDATE account SET is_admin=? WHERE id=?```
 
-* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa toisen käyttäjätunnuksen. _ei vielä toteutettu_
+* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa minkä tahansa käyttäjätunnuksen.
 
 ```DELETE FROM account WHERE id=?```
 
@@ -42,6 +42,11 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 * Keskusteluketjuja voi suodattaa aiheiden mukaan. _Aihepiirien mukaan suodattaminen vielä kesken_
 
+
+* Keskusteluketjun poistaminen. Tämä toiminto ei aktivoidu suoraan käyttäjän toimenpiteestä, vaan epäsuorasti sen seurauksena, kun ketjun viimeinen viesti poistetaan.
+
+```DELETE FROM thread WHERE id=?```
+
 ## Viestit
 
 * Lista kaikista viesteistä. (Toimintoa ei tällä hetkellä käytetä sovelluksessa tällaisenaan mihinkään, mutta se on kuitenkin aiemman kehityksen tuloksena olemassa eikä poistettu.)
@@ -51,6 +56,10 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 * Viestilistasta voi avata yksittäisen viestin, jolloin pääsee näkemään sen varsinaisen sisällön. Jos käyttäjä avaa oman viestinsä, tässä näkymässä pääsee myös muokkaamaan viestiä tai poistamaan sen.
 
 ```SELECT * FROM message WHERE id=?```
+
+* Viestin kirjoittanut käyttäjä tai admin-käyttäjä voi poistaa viestin.
+
+```DELETE FROM message WHERE id=?```
 
 ## Aihepiirit
 
