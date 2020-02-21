@@ -104,4 +104,6 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 * Keksusteluketjujen määrä.
 
-```SELECT COUNT(thread.id) FROM MESSAGE
+```SELECT COUNT(thread.id) FROM MESSAGE```
+
+
