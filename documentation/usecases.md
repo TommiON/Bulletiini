@@ -2,7 +2,7 @@
 
 Sovelluksen avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread), jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (tietokannassa Account), joista osa voi olla ylläpito-oikeuksin varustettuja.
 
-Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
+Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(Aihepiireihin (Topic) liittyvä toiminnallisuus on vielä kesken..)
 
 ## Käyttäjähallinta
 
@@ -40,8 +40,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 
 ```INSERT INTO thread(id, title, time_of_opening) VALUES(?, ?, current_timestamp())```
 
-* Keskusteluketjuja voi suodattaa aiheiden mukaan. _Aihepiirien mukaan suodattaminen vielä kesken_
-
+* Keskusteluketjuja voi suodattaa näkyviin aiheiden mukaan. _Aihepiirien mukaan suodattaminen vielä kesken_
 
 * Keskusteluketjun poistaminen. Tämä toiminto ei aktivoidu suoraan käyttäjän toimenpiteestä, vaan epäsuorasti sen seurauksena, kun ketjun viimeinen viesti poistetaan.
 
@@ -56,6 +55,14 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt.
 * Viestilistasta voi avata yksittäisen viestin, jolloin pääsee näkemään sen varsinaisen sisällön. Jos käyttäjä avaa oman viestinsä, tässä näkymässä pääsee myös muokkaamaan viestiä tai poistamaan sen.
 
 ```SELECT * FROM message WHERE id=?```
+
+* Kun keskusteluketju on olemassa, siihen voi kirjoittaa uuden viestin.
+
+```ÌNSERT INTO message(title, content, time_of_sending, author_id, thread_id) VALUES (?, ?, current_timestamp(), ?, ?)```
+
+* Viestin kirjoittanut käyttäjä tai admin-käyttäjä voi muokata viestin otsikkoa ja/tai sisältöä.
+
+```ÙPDATE message SET title=?, content=? WHERE id=?```
 
 * Viestin kirjoittanut käyttäjä tai admin-käyttäjä voi poistaa viestin.
 
@@ -95,8 +102,4 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(DISTINCT message.author_id) FROM message```
 
-
-
-* Normaalioikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet itse kirjoittamiinsa viesteihin, mutta vain lukuoikeudet kaikkeen muuhun. Käyttäjä voi siis muokata viestinsä otsikkoa ja sisältöä sen jälkeen kun se on lähetetty ja myös poistaa koko viestin. Jos käyttäjä poistaa itse kirjoittamansa viestin, joka on ollut keskusteluketjun avausviesti, koko ketju ja kaikki sen viestit poistetaan.
-* Ylläpito-oikeuksin varustetulla käyttäjällä on täydet CRUD-oikeudet kaikkeen dataan, myös muiden käyttäjien käyttäjätietoihin. _Viestien muokkaus- ja poistoauktorisointi ylläpitokäyttäjälle vielä kesken_
-* Sovellus tarjoaa myös erillisen tilastonäkymän, jossa voi tarkastella erilaisia tilastoja: aktiivisimmat viestien kirjoittajat, suosituimmat aiheet, viestin ja käyttäjien kokonaismäärä jne.
+*
