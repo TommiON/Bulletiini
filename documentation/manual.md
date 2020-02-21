@@ -1,6 +1,6 @@
 # Käyttöohje
 
-_(Vajavainen, täydentyy sitä mukaa kun toiminnallisuus saadaan viimeisteltyä...)_
+_(Täydentyy...)_
 
 ## Verkkosovellus
 
@@ -9,6 +9,7 @@ Bulletiini on verkkosovellus eikä sellaisenaan vaadi asentamista. Sovellus löy
 ## Asentaminen
 
 Sovelluksen voi myös asentaa omaan käyttöön esim. localhost-palvelimella toimivaksi:
+
 * [Asenna Python](https://www.python.org/downloads/) jos se ei ole jo asennettu.
 * Luo sovellukselle hakemisto haluamaasi paikkaan ja lataa Bulletiini-repositorion sisältö sinne.
 * Mene äsken luomaasi sovelluksen juurihakemistoon ja asenna tarvittavat riippuvuudet (ennen kaikkea Flask-kirjasto) komennolla ``pip install -r requirements.txt``.
