@@ -102,4 +102,6 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(DISTINCT message.author_id) FROM message```
 
-*
+* Keksusteluketjujen määrä.
+
+```SELECT COUNT(thread.id) FROM MESSAGE
