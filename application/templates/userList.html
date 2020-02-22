@@ -11,6 +11,7 @@
           <th scope="row">Käyttäjänimi</th>
           <th scope="row">Ylläpitäjän oikeudet</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
     <tbody>
@@ -28,8 +29,16 @@
                 {% endif %}
             </td>
             <td>
+                {% if user.is_admin == True %}
+                    <a href="{{ url_for('user_change_admin_status', user_id=user.id) }}">ota ylläpito-oikeudet pois</a>
+                {% endif %}
+                {% if user.is_admin == False %}
+                    <a href="{{ url_for('user_change_admin_status', user_id=user.id) }}">tee käyttäjästä ylläpitäjä</a>
+                {% endif %}
+            </td>
+            <td>
                 {% if current_user.is_admin == True %}
-                    <a href="{{ url_for('users_delete', user_id=user.id) }}">poista tämä tunnus</a>
+                    <a href="{{ url_for('users_delete', user_id=user.id) }}">poista käyttäjätunnus</a>
                 {% endif %}
             </td>
         </tr>

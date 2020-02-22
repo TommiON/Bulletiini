@@ -2,19 +2,32 @@
   
 {% block body %}
     
-<h4>Uusimmat viestit</h4>
+<h4></h4>
 
-<ul>
-    {% for message in latest_messages %}
-    <li>
-        <b><a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a></b>
-        käyttäjältä <b> {{ message.sender.username }} </b>
-        keskustelussa <a href="{{ url_for('thread_details', thread_id=message.thread_id) }}"> {{ message.thread_id }}</a>,
-        lähetetty {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M')}}
-    </li>
-    {% endfor %}
-</ul>
-
-<p>Yhteensä Bulletiinissa {{ number_of_messages }} viestiä {{ number_of_users }} käyttäjältä.</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="row">Uusimmat viestit</th>
+          <th scope="row"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in latest_messages %}
+        <tr>
+            <td>
+                <b><a href="{{ url_for('message_details', message_id=message.id) }}">{{ message.title }}</a></b>
+                käyttäjältä <b> {{ message.sender.username }} </b>
+                keskustelussa <a href="{{ url_for('thread_details', thread_id=message.thread_id) }}"> {{ message.thread_id }}</a>,
+                lähetetty {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M')}}
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                Yhteensä Bulletiinissa {{ number_of_messages }} viestiä {{ number_of_users }} käyttäjältä.
+            </td>
+        </tr>
+    </tbody>
+</table>
    
 {% endblock %}

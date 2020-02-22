@@ -2,16 +2,34 @@
   
 {% block body %}
 
-<h4>{{ message.title }}</h4>
-<p><em>Käyttäjältä <b>{{ message.sender.username }}</b>, lähetetty: {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}</em></p>
-
-{% if current_user.id == message.author_id %}
-    <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">Muokkaa viestiä</a><br>
-    <a href="{{ url_for('messages_delete', message_id=message.id) }}">Poista viesti</a>
-{% endif %}
-
-<br></br>
-
-<p>{{ message.content }} </p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="row">{{ message.title }}</th>
+          <th scope="row"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Käyttäjältä: <b>{{ message.sender.username }}</b></td>
+            <td>Lähetetty: {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}</td>
+        </tr>
+        {% if current_user.id == message.author_id %}
+        <tr>
+            <td>
+                <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">Muokkaa viestiä</a>
+            </td>
+            <td>
+                <a href="{{ url_for('messages_delete', message_id=message.id) }}">Poista viesti</a>
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>
+                {{ message.content }}
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 {% endblock %}

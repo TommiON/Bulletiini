@@ -38,7 +38,7 @@ def users_create():
 
 
 # admin-oikeuksien asetus ja poisotto, vaatii admin-oikeudet
-@app.route("/users/<user_id>/", methods=["POST"])
+@app.route("/users/<user_id>/", methods=["GET"])
 @login_required(role="ADMIN")
 def user_change_admin_status(user_id):
     user = User.query.get(user_id)
