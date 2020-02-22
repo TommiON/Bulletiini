@@ -25,27 +25,20 @@ def thread_details(thread_id):
 @login_required(role="BASIC")
 def thread_openingForm():
     form = new_thread_form()
-    form.topics = [(t.id, t.name) for t in Topic.query.all()]
-    return render_template("thread_creation_form.html", form=form)
-    # return render_template("messageOpeningForm.html", form=MessageForm())
-
-# palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
-@app.route("/threads/<thread_id>/new", methods=["GET"])
-@login_required(role="BASIC")
-def thread_responseForm(thread_id):
-    return render_template("messageResponseForm.html", form=MessageForm(), thread_id=thread_id)
+    # topics = [(t.id, t.name) for t in Topic.query.all()]
+    topics = Topic.query.all()
+    return render_template("thread_creation_form.html", form=form, topics=topics)
+    
 
 # luo uuden keskusteluketjun
 @app.route("/threads", methods=["POST"])
 @login_required(role="BASIC")
 def thread_create():
-    # väliaikainen toteutus, kokeillaan miten many-to-manyt toimii
-    # topics = []
-    # topics.append(Topic.query.get(1))
-    # topics.append(Topic.query.get(2))
-    ##
-
+    user_choices = request.form.getlist("choices")
     topics = []
+    for user_choice in user_choices:
+        topics.append(Topic.query.get(int(user_choice)))
+
     new_thread = Thread(title="väliaikainen otsikko", time_of_opening=datetime.now(), author_id=current_user.id, topics=topics)
     db.session.add(new_thread)
     db.session.commit()
@@ -59,6 +52,14 @@ def thread_create():
     db.session.add(new_message)
     db.session.commit()
     return render_template("threadDetails.html", thread = new_thread)
+
+
+# palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
+@app.route("/threads/<thread_id>/new", methods=["GET"])
+@login_required(role="BASIC")
+def thread_responseForm(thread_id):
+    return render_template("messageResponseForm.html", form=MessageForm(), thread_id=thread_id)
+
 
 # lisää uuden viestin ketjuun
 @app.route("/threads/<thread_id>", methods=["POST"])

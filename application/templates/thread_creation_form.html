@@ -34,16 +34,12 @@
                 </td>
             </tr>
             <tr>
+                <td>Aiheet joihin viesti liittyy:</td>
                 <td>
-                    <fieldset>
-                        <legend>Aiheet</legend>
-                        {% for topic in form.topics %}
-                            <div class="form-check">
-                                {{ topic }}
-                            </div>
-                        {% endfor %}
-                    </fieldset>
-                    
+                    {% for topic in topics %}
+                    <input type="checkbox" id="{topic}" name="choices" value="{{topic.id}}">
+                    <label for="{topic}">{{ topic.name }} </label><br>
+                    {% endfor %}
                 </td>
             </tr>
             <tr>
