@@ -8,13 +8,13 @@ from application.authentication.forms import LoginForm
 @app.route("/authentication/login", methods = ["GET", "POST"])
 def authentication_login():
     if request.method == "GET":
-        return render_template("loginForm.html", form = LoginForm())
+        return render_template("login_form.html", form = LoginForm())
 
     form = LoginForm(request.form)
 
     user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
     if not user:
-        return render_template("loginForm.html", form = form, error = "Käyttäjänimi tai salasana virheellinen!")
+        return render_template("login_form.html", form = form, error = "Käyttäjänimi tai salasana virheellinen!")
 
     login_user(user)
     return redirect(url_for("index"))    

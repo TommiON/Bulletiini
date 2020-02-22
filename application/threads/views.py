@@ -12,13 +12,13 @@ from application.topics.models import Topic
 # tulostaa listan kaikista keskusteluketjuista
 @app.route("/threads", methods=["GET"])
 def thread_list():
-    return render_template("threadsList.html", threads=Thread.query.all())
+    return render_template("threads_list.html", threads=Thread.query.all())
 
 # yksittäisen keskusteluketjun tiedot
 @app.route("/threads/<thread_id>", methods=["GET"])
 def thread_details(thread_id):
     thread = Thread.query.get(thread_id)
-    return render_template("threadDetails.html", thread=thread)
+    return render_template("thread_details.html", thread=thread)
 
 # palauttaa lomakkeen uuden ketjun avaamiseksi
 @app.route("/threads/new", methods=["GET"])
@@ -45,20 +45,20 @@ def thread_create():
 
     form = MessageForm(request.form)
     if not form.validate():
-        return render_template("messageOpeningForm.html", form = form)
+        return render_template("message_opening_form.html", form = form)
     new_message = Message(title=form.title.data, content=form.content.data, time_of_sending=datetime.now(), author_id=current_user.id, thread_id=new_thread.id)
     new_thread.title = new_message.title
 
     db.session.add(new_message)
     db.session.commit()
-    return render_template("threadDetails.html", thread = new_thread)
+    return render_template("thread_details.html", thread = new_thread)
 
 
 # palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
 @app.route("/threads/<thread_id>/new", methods=["GET"])
 @login_required(role="BASIC")
 def thread_responseForm(thread_id):
-    return render_template("messageResponseForm.html", form=MessageForm(), thread_id=thread_id)
+    return render_template("message_response_form.html", form=MessageForm(), thread_id=thread_id)
 
 
 # lisää uuden viestin ketjuun
@@ -67,11 +67,11 @@ def thread_responseForm(thread_id):
 def thread_respond(thread_id):
     form = MessageForm(request.form)
     if not form.validate():
-        return render_template("messageResponseForm.html", form = form)
+        return render_template("message_response_form.html", form = form)
     new_message = Message(title=form.title.data, content=form.content.data, time_of_sending=datetime.now(), author_id=current_user.id, thread_id=thread_id)
     db.session.add(new_message)
     db.session.commit()
-    return render_template("threadDetails.html", thread=Thread.query.get(thread_id))
+    return render_template("thread_details.html", thread=Thread.query.get(thread_id))
 
 # poistaa ketjun
 @app.route("/threads/delete/<thread_id>", methods=["GET"])
@@ -80,4 +80,4 @@ def threads_delete(thread_id):
     thread_to_be_deleted = Thread.query.get(thread_id)
     db.session.delete(thread_to_be_deleted)
     db.session.commit()
-    return render_template("threadsList.html", threads=Thread.query.all())
+    return render_template("threads_list.html", threads=Thread.query.all())

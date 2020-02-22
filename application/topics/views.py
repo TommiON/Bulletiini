@@ -8,12 +8,12 @@ from application.topics.forms import topic_form
 # tulostaa luettelon kaikista aiheista
 @app.route("/topics", methods=["GET"])
 def topics_list():
-    return render_template("topicList.html", topics = Topic.query.all())
+    return render_template("topic_list.html", topics = Topic.query.all())
 
 # palauttaa lomakkeen uuden aiheen luomiseksi
 @app.route("/topics/new", methods=["GET"])
 def topic_creation_form():
-    return render_template("topicCreationForm.html", form=topic_form())
+    return render_template("topic_creation_form.html", form=topic_form())
 
 # luo uuden aiheen
 @app.route("/topics", methods=["POST"])
@@ -24,7 +24,7 @@ def topic_create():
     
     # validoidaan syöte
     if not form.validate():
-        return render_template("topicCreationForm.html", form = form)
+        return render_template("topic_creation_form.html", form = form)
     
     # tarkistetaan löytyykö aihe jo tietokannasta, estetään duplikaatti
     sqlQuery = text("SELECT * FROM topic WHERE topic.name = :new_name").params(new_name=name)
@@ -32,7 +32,7 @@ def topic_create():
     rows = result.fetchall()
     if len(rows) > 0:
         # notifikaatio?
-        return render_template("topicList.html", topics = Topic.query.all())
+        return render_template("topic_list.html", topics = Topic.query.all())
     
     # lisätään tietokantaan
     new_topic = Topic(name = form.name.data)
@@ -40,7 +40,7 @@ def topic_create():
     db.session.commit()
 
     # paluu aihelistaan
-    return render_template("topicList.html", topics = Topic.query.all())
+    return render_template("topic_list.html", topics = Topic.query.all())
 
 # poistaa aiheen
 @app.route("/topics/delete/<topic_id>", methods=["GET"])
@@ -49,4 +49,4 @@ def topics_delete(topic_id):
     topic_to_be_deleted = Topic.query.get(topic_id)
     db.session.delete(topic_to_be_deleted)
     db.session.commit()
-    return render_template("topicList.html", topics = Topic.query.all())
+    return render_template("topic_list.html", topics = Topic.query.all())

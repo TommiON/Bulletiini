@@ -7,20 +7,20 @@ from datetime import datetime
 # käyttäjälista
 @app.route("/users", methods=["GET"])
 def users_list():
-    return render_template("userList.html", users=User.query.all()) 
+    return render_template("user_list.html", users=User.query.all()) 
 
 
 # yksittäisen käyttäjän tiedot
 @app.route("/users/<user_id>", methods=["GET"])
 def user_details(user_id):
     user = User.query.get(user_id)
-    return render_template("userDetails.html", user=user)
+    return render_template("user_details.html", user=user)
 
 
 # lomake uuden käyttäjän luomiseen
 @app.route("/users/new", methods=["GET"])
 def users_creationForm():
-    return render_template("userCreationForm.html", form=UserCreationForm())
+    return render_template("user_creation_form.html", form=UserCreationForm())
 
 
 # uuden käyttäjän luominen
@@ -29,12 +29,12 @@ def users_create():
     form = UserCreationForm(request.form)
 
     if not form.validate():
-        return render_template("userCreationForm.html", form = form)
+        return render_template("user_creation_form.html", form = form)
 
     new_user = User(form.username.data, form.password.data, False, datetime.now())
     db.session.add(new_user)
     db.session.commit()
-    return render_template("userList.html", users=User.query.all()) 
+    return render_template("user_list.html", users=User.query.all()) 
 
 
 # admin-oikeuksien asetus ja poisotto, vaatii admin-oikeudet
@@ -55,5 +55,5 @@ def users_delete(user_id):
     user_to_be_deleted = User.query.get(user_id)
     db.session.delete(user_to_be_deleted)
     db.session.commit()
-    return render_template("userList.html", users=User.query.all()) 
+    return render_template("user_list.html", users=User.query.all()) 
 
