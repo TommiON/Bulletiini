@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy.sql import text
 
 from application.messages.models import Message
-from application.messages.forms import MessageForm
+from application.messages.forms import message_form
 
 # tulostaa luettelon kaikista viesteistä
 @app.route("/messages", methods=["GET"])
@@ -51,7 +51,7 @@ def messages_delete(message_id):
 @app.route("/messages/edit/<message_id>", methods=["GET"])
 @login_required(role="BASIC")
 def messages_editingForm(message_id):
-    return render_template("message_editing_form.html", form=MessageForm(), message_id=message_id)
+    return render_template("message_editing_form.html", form=message_form(), message_id=message_id)
 
 
 # korvaa viestin uudella (editointitoiminnallisuus), sallittu vain viestin kirjoittaneelle tai adminille
@@ -65,14 +65,14 @@ def messages_edit(message_id):
         return login_manager.unauthorized()
     
     # haetaan lomakedata
-    form = MessageForm(request.form)
+    form = message_form(request.form)
     
     # tallennetaan viestin thread_id palautus-urlia varten
     thread_id = message.thread_id
 
     # validoidaan
     if not form.validate():
-        return render_template("message_editing_form.html", form=MessageForm(), message_id=message_id)
+        return render_template("message_editing_form.html", form=message_form(), message_id=message_id)
     
     # päivitetään viesti
     message.title = form.title.data

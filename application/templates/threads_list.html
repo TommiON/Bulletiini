@@ -15,7 +15,7 @@
           <th scope="row">Viestejä</th>
         </tr>
       </thead>
-    <tbody>
+    <tbody class="table table-striped">
         {% for thread in threads %}
         <tr>
             <td><a href="{{ url_for('thread_details', thread_id=thread.id) }}">{{ thread.title }}</a></td>
@@ -32,4 +32,22 @@
     </tbody>
 </table>
 
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="row">Suodata aiheiden mukaan: </th>
+    </tr>
+    <tbody>
+      <tr>
+        {% for topic in topics %}
+        <td>
+          <input type="checkbox" id="{topic}" name="choices" value="{{topic.id}}">
+          <label for="{topic}">{{ topic.name }} </label><br>
+        </td>
+        {% endfor %}
+      </tr>
+    </tbody>
+
+  </thead>
+</table>
 {% endblock %}
