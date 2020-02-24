@@ -2,11 +2,11 @@
 
 Sovelluksen avainkäsitteitä ovat Viestit (Message), joista muodostuu Keskusteluketjuja (Thread), jotka voivat kuulua yhteen tai useampaan Aiheeseen (Topic). Lisäksi sovelluksessa on tietysti Käyttäjiä (tietokannassa Account), joista osa voi olla ylläpito-oikeuksin varustettuja.
 
-Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(Aihepiireihin (Topic) liittyvä toiminnallisuus on vielä kesken..)
+Alla on lueteltu sovelluksen käyttötapaukset, niitä tukevat SQL-kyselyt sekä mahdolliset validoinnit jotka käyttötapaukseen liittyvän datan pitää läpäistä.
 
 ## Käyttäjähallinta
 
-* Käyttäjä voi luoda itselleen käyttäjätunnuksen. Uusilla käyttäjätunnuksilla ei ole ylläpitäjän oikeuksia.
+* Käyttäjä voi luoda itselleen käyttäjätunnuksen. Uusilla käyttäjätunnuksilla ei ole ylläpitäjän oikeuksia. Käyttäjänimen ja salasanan pitää olla 1-30 merkkiä pitkiä merkkijonoja.
 
 ```INSERT INTO account(username, password, is_admin, joined) VALUES (?, ? , false, current_timestamp())```
 
@@ -14,7 +14,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(
 
 ```UPDATE account SET is_admin=? WHERE id=?```
 
-* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa minkä tahansa käyttäjätunnuksen. _Jos käyttäjä poistetaan, myös kaikki hänen kirjoittamansa viestit poistetaan tietokannasta. Ei vielä toteutettu._
+* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa minkä tahansa käyttäjätunnuksen. Jos käyttäjätunnus poistetaan, tämän kirjoittamat viestit jäävät kuitenkin jäljelle, jos myös niitä ei erikseen poisteta.
 
 ```DELETE FROM account WHERE id=?```
 
@@ -36,7 +36,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(
 
 ```SELECT * FROM thread WHERE id=?```
 
-* Uuden keskusteluketjun luominen. Tämä käyttötapaus ei ilmene koskaan yksinään, vaan yhdessä viestin luomisen kanssa. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita. _Aiheiden valitsemistoiminnallisuus vielä kesken_
+* Uuden keskusteluketjun luominen. Tämä käyttötapaus ei ilmene koskaan yksinään, vaan yhdessä viestin luomisen kanssa. Uutta keskusteluketjua aloitettaessa viestille voi valita yhden tai useamman aiheen valmiista listasta. Aiheet ovat eräänlaisia leimoja/tageja, jotka kuvaavat keskustelun aihetta. Aihe on aina kokonaisen keskusteluketjun ominaisuus ja kattaa siis kaikki kyseisen ketjun viestit. Keskusteluketjulla voi olla samanaikaisesti useita aiheita. Keskusteluketjulla pitää olla 1-50 merkkiä pitkä otsikko ja myös viite kirjoittajaan on pakollinen arvo.
 
 ```INSERT INTO thread(id, title, time_of_opening) VALUES(?, ?, current_timestamp())```
 
@@ -56,11 +56,11 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(
 
 ```SELECT * FROM message WHERE id=?```
 
-* Kun keskusteluketju on olemassa, siihen voi kirjoittaa uuden viestin.
+* Kun keskusteluketju on olemassa, siihen voi kirjoittaa uuden viestin. Otsikon pitää olla 1-50 merkkiä pitkä merkkijono. Sisältö ei ole pakollinen, mutta se saa olla enintään 5000 merkkiä pitkä. Myös viitteet kirjoittajaan ja keskusteluketjuun ovat pakollisia arvoja.
 
 ```ÌNSERT INTO message(title, content, time_of_sending, author_id, thread_id) VALUES (?, ?, current_timestamp(), ?, ?)```
 
-* Viestin kirjoittanut käyttäjä tai admin-käyttäjä voi muokata viestin otsikkoa ja/tai sisältöä.
+* Viestin kirjoittanut käyttäjä tai admin-käyttäjä voi muokata viestin otsikkoa ja/tai sisältöä. Tähän pätevät samat validoinnit kuin uuden viestin luomisessa.
 
 ```ÙPDATE message SET title=?, content=? WHERE id=?```
 
@@ -74,7 +74,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(
 
 ```SELECT * from topic```
 
-* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä aiheita.
+* Ylläpito-oikeuksien varustettu käyttäjä voi lisätä aiheita. Aiheen nimen pitää olla 1-50 merkkiä pitkä merkkijono.
 
 ```ÌNSERT INTO topic(name) VALUES(?)```
 
