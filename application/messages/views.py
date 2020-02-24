@@ -27,7 +27,7 @@ def messages_delete(message_id):
     message_to_be_deleted = Message.query.get(message_id)
     
     # tarkistetaan onko kirjautunut käyttäjä viestin omistaja tai admin
-    if (message_to_be_deleted.author_id != current_user.id or current_user.is_admin == False):
+    if (message_to_be_deleted.author_id != current_user.id and current_user.is_admin == False):
         return login_manager.unauthorized()
     
     # tallennetaan viestin thread_id palautus-urlia tai ketjun tuhoamista varten
@@ -47,11 +47,15 @@ def messages_delete(message_id):
     return redirect(url_for("thread_details", thread_id = thread_id))
 
 
-# palauttaa lomakkeen viestin editoimiseen (väliaikainen ratkaisu)
+# palauttaa lomakkeen viestin editoimiseen
 @app.route("/messages/edit/<message_id>", methods=["GET"])
 @login_required(role="BASIC")
 def messages_editingForm(message_id):
-    return render_template("message_editing_form.html", form=message_form(), message_id=message_id)
+    message_to_be_edited = Message.query.get(message_id)
+    form = message_form()
+    form.title.data = message_to_be_edited.title
+    form.content.data = message_to_be_edited.content
+    return render_template("message_editing_form.html", form=form, message_id=message_id)
 
 
 # korvaa viestin uudella (editointitoiminnallisuus), sallittu vain viestin kirjoittaneelle tai adminille
@@ -61,7 +65,7 @@ def messages_edit(message_id):
     message = Message.query.get(message_id)
     
     # tarkistetaan onko kirjautunut käyttäjä viestin omistaja tai admin
-    if (message.author_id != current_user.id or current_user.is_admin == False):
+    if (message.author_id != current_user.id and current_user.is_admin == False):
         return login_manager.unauthorized()
     
     # haetaan lomakedata

@@ -34,12 +34,12 @@
               <b>{{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}</b>
             </td>
             <td>
-              {% if current_user.id == message.author_id %}
+              {% if (current_user.id == message.author_id) or (current_user.is_admin == True) %}
               <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">muokkaa</a>
               {% endif %}
             </td>
             <td>
-              {% if current_user.id == message.author_id %}
+              {% if (current_user.id == message.author_id) or (current_user.is_admin == True) %}
               <a href="{{ url_for('messages_delete', message_id=message.id) }}">poista</a>
               {% endif %}
             </td>

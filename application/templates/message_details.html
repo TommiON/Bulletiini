@@ -14,7 +14,7 @@
             <td>Käyttäjältä: <b>{{ message.sender.username }}</b></td>
             <td>Lähetetty: {{ message.time_of_sending.strftime('%d.%m %Y klo %I:%M') }}</td>
         </tr>
-        {% if current_user.id == message.author_id %}
+        {% if (current_user.id == message.author_id) or (current_user.is_admin == True) %}
         <tr>
             <td>
                 <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">Muokkaa viestiä</a>

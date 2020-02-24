@@ -28,17 +28,17 @@
         </tr>
         <tr>
             <td>
-                {% if user.is_admin == True %}
+                {% if user.is_admin == True and current_user.is_admin == True %}
                     <a href="{{ url_for('user_change_admin_status', user_id=user.id) }}">ota ylläpito-oikeudet pois</a>
                 {% endif %}
-                {% if user.is_admin == False %}
+                {% if user.is_admin == False and current_user.is_admin == True %}
                     <a href="{{ url_for('user_change_admin_status', user_id=user.id) }}">tee käyttäjästä ylläpitäjä</a>
                 {% endif %}
             </td>
         </tr>
         <tr>
             <td>
-                {% if user.is_admin == True %} 
+                {% if current_user.is_admin == True %} 
                 <a href="{{ url_for('users_delete', user_id=user.id) }}">poista käyttäjätunnus</a>
                 {% endif %}
             </td>
