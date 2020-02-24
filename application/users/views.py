@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for
 from application.users.models import User
 from application.messages.models import Message
 from application.threads.models import Thread
+from application.associations import Thread_topic
 from application.users.forms import UserCreationForm
 from datetime import datetime
 
@@ -58,6 +59,10 @@ def users_delete(user_id):
     
     Message.query.filter(Message.author_id == user_id).delete()
     Thread.query.filter(Thread.author_id == user_id).delete()
+
+    # pitää saada vielä pois viitteet liitostaulusta, jos Thread poistetaan
+    # ongelma ilmenee siis silloin, kun poistettava käyttäjä Threadin avaajana?
+
     db.session.delete(user_to_be_deleted)
 
     db.session.commit()
