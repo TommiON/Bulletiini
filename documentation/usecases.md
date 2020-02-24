@@ -14,7 +14,7 @@ Alla on lueteltu sovelluksen käyttötapaukset ja niitä tukevat SQL-kyselyt. _(
 
 ```UPDATE account SET is_admin=? WHERE id=?```
 
-* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa minkä tahansa käyttäjätunnuksen.
+* Ylläpito-oikeuksin varustettu käyttäjä voi poistaa minkä tahansa käyttäjätunnuksen. _Jos käyttäjä poistetaan, myös kaikki hänen kirjoittamansa viestit poistetaan tietokannasta. Ei vielä toteutettu._
 
 ```DELETE FROM account WHERE id=?```
 
