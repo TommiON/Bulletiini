@@ -6,6 +6,25 @@
 <br></br>
 
 <table class="table">
+  <thead class="thead-dark">
+    <th>Aihepiirit: </th>
+    <th>
+      <input type="submit" value="Suodata"/>
+    </th>
+  </thead>
+  <tbody>
+    <tr>
+      {% for topic in topics %}
+        <td>
+          <input type="checkbox" id="{topic}" name="choices" value="{{topic.id}}">
+          <label for="{topic}">{{ topic.name }} </label><br>
+        </td>
+        {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
     <thead class="thead-dark">
         <tr>
           <th scope="row">Keskusteluketjut</th>
@@ -22,7 +41,7 @@
             <td>{{ thread.opener.username }}</td>
             <td>
               {% for topic in thread.topics %}
-              {{ topic.name }} 
+              {{ topic.name }}, 
               {% endfor %}
             </td>
             <td>{{ thread.time_of_opening.strftime('%d.%m %Y klo %I:%M') }}</td>
@@ -32,22 +51,5 @@
     </tbody>
 </table>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="row">Suodata aiheiden mukaan: </th>
-    </tr>
-    <tbody>
-      <tr>
-        {% for topic in topics %}
-        <td>
-          <input type="checkbox" id="{topic}" name="choices" value="{{topic.id}}">
-          <label for="{topic}">{{ topic.name }} </label><br>
-        </td>
-        {% endfor %}
-      </tr>
-    </tbody>
 
-  </thead>
-</table>
 {% endblock %}

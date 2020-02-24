@@ -47,7 +47,7 @@ def messages_delete(message_id):
     return redirect(url_for("thread_details", thread_id = thread_id))
 
 
-# palauttaa lomakkeen viestin editoimiseen
+# palauttaa esitäytetyn lomakkeen viestin editoimiseen
 @app.route("/messages/edit/<message_id>", methods=["GET"])
 @login_required(role="BASIC")
 def messages_editingForm(message_id):

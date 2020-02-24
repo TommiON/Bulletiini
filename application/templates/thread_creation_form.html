@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>{{ form.content.label }}</td>
-                <td>{{ form.content }}</td>
+                <td>{{ form.content(rows='10',cols='100') }}</td>
                 <td>
                     <ul>
                       {% for error in form.content.errors %}
