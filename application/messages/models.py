@@ -5,7 +5,7 @@ class Message(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(5000), nullable=True)
     time_of_sending = db.Column(db.DateTime(timezone=False))
-    author_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=True)
+    author_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'), nullable=False)
 
     def __init__(self, title, content, time_of_sending, author_id, thread_id):
