@@ -56,7 +56,7 @@ Alla on lueteltu sovelluksen käyttötapaukset, niitä tukevat SQL-kyselyt sekä
 
 ```SELECT * FROM message WHERE id=?```
 
-* Kun keskusteluketju on olemassa, siihen voi kirjoittaa uuden viestin. Otsikon pitää olla 1-50 merkkiä pitkä merkkijono. Sisältö ei ole pakollinen, mutta se saa olla enintään 5000 merkkiä pitkä. Myös viitteet kirjoittajaan ja keskusteluketjuun ovat pakollisia arvoja.
+* Kun keskusteluketju on olemassa, siihen voi kirjoittaa uuden viestin. Otsikon pitää olla 1-50 merkkiä pitkä merkkijono. Myös viitteet kirjoittajaan ja keskusteluketjuun ovat pakollisia arvoja. Sisältö ei ole pakollinen, mutta se saa olla enintään 5000 merkkiä pitkä.
 
 ```ÌNSERT INTO message(title, content, time_of_sending, author_id, thread_id) VALUES (?, ?, current_timestamp(), ?, ?)```
 
