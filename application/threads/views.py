@@ -15,6 +15,12 @@ from application.associations import Thread_topic
 def thread_list():
     return render_template("threads_list.html", threads=Thread.query.all(), topics=Topic.query.all())
 
+# tulostaa listan tietyn aihepiirin keskusteluketjuista
+@app.route("/threads/filter/<topic_id>", methods=["GET"])
+def threads_by_topic(topic_id):
+    threads = Topic.query.get(topic_id).threads
+    return render_template("threads_list.html", threads=threads, topics=Topic.query.all())
+
 # yksittäisen keskusteluketjun tiedot
 @app.route("/threads/<thread_id>", methods=["GET"])
 def thread_details(thread_id):

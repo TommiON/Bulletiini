@@ -5,24 +5,10 @@
 <a href="{{ url_for('thread_openingForm') }}">Aloita uusi keskusteluketju</a>
 <br></br>
 
-<table class="table">
-  <thead class="thead-dark">
-    <th>Aihepiirit: </th>
-    <th>
-      <input type="submit" value="Suodata"/>
-    </th>
-  </thead>
-  <tbody>
-    <tr>
-      {% for topic in topics %}
-        <td>
-          <input type="checkbox" id="{topic}" name="choices" value="{{topic.id}}">
-          <label for="{topic}">{{ topic.name }} </label><br>
-        </td>
-        {% endfor %}
-    </tr>
-  </tbody>
-</table>
+<p>Näytä vain tietyn aihepiirin keskustelut:</p>
+{% for topic in topics %}
+<a href="{{ url_for('threads_by_topic', topic_id=topic.id) }}">{{ topic.name }}</a>
+{% endfor %}
 
 <table class="table">
     <thead class="thead-dark">
