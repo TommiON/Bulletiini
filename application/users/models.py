@@ -10,8 +10,8 @@ class User(db.Model):
     password = db.Column(db.String(30), nullable=False)
     is_admin = db.Column(db.Boolean, nullable=False)
     joined = db.Column(db.DateTime, default=db.func.current_timestamp())
-    messages = db.relationship('Message', backref='sender', lazy=True)
-    threads = db.relationship('Thread', backref='opener', lazy=True)
+    messages = db.relationship('Message', backref='sender', cascade='all, delete-orphan', single_parent=True, lazy=True)
+    threads = db.relationship('Thread', backref='opener', cascade='all, delete-orphan', single_parent=True, lazy=True)
 
     def __init__(self, username, password, is_admin, joined):
         self.username = username
