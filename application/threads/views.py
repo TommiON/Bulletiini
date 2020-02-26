@@ -79,6 +79,5 @@ def thread_respond(thread_id):
 def threads_delete(thread_id):
     thread_to_be_deleted = Thread.query.get(thread_id)
     db.session.delete(thread_to_be_deleted)
-    Thread_topic.filter(thread_id==thread_id).delete()
     db.session.commit()
     return render_template("threads_list.html", threads=Thread.query.all())
