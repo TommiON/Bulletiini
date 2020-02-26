@@ -8,6 +8,7 @@ from application.threads.forms import new_thread_form
 from application.messages.models import Message
 from application.messages.forms import message_form
 from application.topics.models import Topic
+from application.associations import Thread_topic
 
 # tulostaa listan kaikista keskusteluketjuista
 @app.route("/threads", methods=["GET"])
@@ -78,5 +79,6 @@ def thread_respond(thread_id):
 def threads_delete(thread_id):
     thread_to_be_deleted = Thread.query.get(thread_id)
     db.session.delete(thread_to_be_deleted)
+    Thread_topic.filter(thread_id==thread_id).delete()
     db.session.commit()
     return render_template("threads_list.html", threads=Thread.query.all())
