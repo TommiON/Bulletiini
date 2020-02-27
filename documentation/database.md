@@ -10,7 +10,7 @@ Tietokannassa on neljä varsinaista tietokohdetta (Käyttäjä, Viesti, Keskuste
 
 Sovellus käyttää Herokussa PostgreSQL-tietokantaa, mutta paikallisesti sovellusta on kehitetty SQLite:n varassa. Tästä seurasi kehityksen kuluessa lukuisia ongelmia, koska näemmä PostgreSQL suhtautuu huomattavasti tiukemmin tietokannan integriteettiin (esim. viittaukset ei-minnekään) kuin SQLite. Näin ollen paikallisessa kehityksessä toimivaksi kuvitellut seikat osoittautuivatkin usein "tuotantoympäristössä" toimimattomiksi ja seurasi työlästä buginmetsästystä. Todennäköisesti parempi lähestymistapa olisi ollut käyttää PostgreSQL:aa kehityksessä myös paikallisesti.
 
-SQLite/PostgreSQL-ristiinvedon ja ajanpuutteen vuoksi sovellukseen myös jäi yksi epätyydyttävästi toimiva ominaisuus, josta lisää [puutedokumentissa](puutteet.md)
+SQLite/PostgreSQL-ristiinvedon ja ajanpuutteen vuoksi sovellukseen myös jäi yksi epätyydyttävästi toimiva ominaisuus, josta lisää [puutedokumentissa](puutteet.md).
 
 ## Taulujen CREATE TABLE -lauseet
 
