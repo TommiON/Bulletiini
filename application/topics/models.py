@@ -6,7 +6,7 @@ from application.associations import Thread_topic
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    threads = db.relationship('Thread', secondary='Thread_topic', back_populates='topics', lazy=True, cascade='all, delete-orphan', single_parent=True)
+    threads = db.relationship('Thread', secondary='Thread_topic', back_populates='topics', lazy=True, single_parent=True)
     
     def __init__(self, name):
         self.name = name
