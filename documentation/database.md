@@ -4,6 +4,14 @@
 
 ![](Tietokantakaavio.png)
 
+## Huomioita tietokannassa
+
+Sovellus käyttää Herokussa PostgreSQL-tietokantaa, mutta paikallisesti sovellusta on kehitetty SQLite:n varassa. Tästä seurasi 
+
+Kahdessa tietokannan taulussa (Account ja Message) on täysi CRUD-toiminnallisuus.
+
+Kaikki tietokannan entiteetit ovat kolmannessa normaalimuodossa.
+
 ## Taulujen CREATE TABLE -lauseet
 
 Käyttäjä (User-entiteetin nimi tietokantatauluna on Account):
