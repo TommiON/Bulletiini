@@ -8,3 +8,4 @@ Lisäksi jäi toteuttamatta muutamia melko ilmeisiä toimintoja ja osa-alueita:
 
 * Haarautuvat viestiketjut: viesteihin voisi vastata niin, että ne muodostavat hierarkkisia viestipuita.
 * Käytettävyydessä ja ulkoasussa joitain puutteita ja hiomattomuuksia.
+* Salasanat tallennetaan salaamattomana, ei ollut aikaa tehdä oikeaoppista, hässättyä toteutusta.
