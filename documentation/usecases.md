@@ -92,6 +92,14 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(message.id) FROM message```
 
+* Keskusteluketjussa jäljellä olevien viestien määrä (tarvitaan keskusteluketjun automaattisessa poistamisessa).
+
+```SELECT COUNT(message.id) FROM message WHERE message.thread_id=?```
+
+* Yksittäisen käyttäjän kirjoittamien viestien määrä.
+
+```SELECT COUNT(message.id) FROM message LEFT JOIN account ON account.id=message.author_id WHERE account.i=?```
+
 * Uusimpien x:n viestin (nykytoteutuksessa 10:n) näyttäminen sovelluksen etusivulla.
 
 ```SELECT * FROM message ORDER BY id DESC LIMIT 10```
@@ -104,8 +112,11 @@ Seuraavat käyttötapaukset eivät ole suoraan seurausta käyttäjän toimista, 
 
 ```SELECT COUNT(DISTINCT message.author_id) FROM message```
 
-* Keksusteluketjujen määrä.
+* Keskusteluketjujen määrä.
 
 ```SELECT COUNT(thread.id) FROM MESSAGE```
 
+* Viestien määrä yksittäisessä keskusteluketjussa.
+
+```SELECT COUNT(message.id) FROM message LEFT JOIN thread ON thread.id=message.thread_id WHERE thread.id=?```
 
