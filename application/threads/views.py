@@ -6,7 +6,7 @@ from flask_login import current_user
 from application.threads.models import Thread
 from application.threads.forms import new_thread_form
 from application.messages.models import Message
-from application.messages.forms import message_form
+from application.messages.forms import MessageForm
 from application.topics.models import Topic
 from application.associations import Thread_topic
 
@@ -50,7 +50,7 @@ def thread_create():
     db.session.add(new_thread)
     db.session.commit()
 
-    form = message_form(request.form)
+    form = MessageForm(request.form)
     if not form.validate():
         return render_template("message_opening_form.html", form = form)
     new_message = Message(title=form.title.data, content=form.content.data, time_of_sending=datetime.now(), author_id=current_user.id, thread_id=new_thread.id)
@@ -65,13 +65,13 @@ def thread_create():
 @app.route("/threads/<thread_id>/new", methods=["GET"])
 @login_required(role="BASIC")
 def thread_responseForm(thread_id):
-    return render_template("message_response_form.html", form=message_form(), thread_id=thread_id)
+    return render_template("message_response_form.html", form=MessageForm(), thread_id=thread_id)
 
 # lisää uuden viestin ketjuun
 @app.route("/threads/<thread_id>", methods=["POST"])
 @login_required(role="BASIC")
 def thread_respond(thread_id):
-    form = message_form(request.form)
+    form = MessageForm(request.form)
     if not form.validate():
         return render_template("message_response_form.html", form = form)
     new_message = Message(title=form.title.data, content=form.content.data, time_of_sending=datetime.now(), author_id=current_user.id, thread_id=thread_id)
