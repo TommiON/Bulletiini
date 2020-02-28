@@ -40,7 +40,9 @@ Alla on lueteltu sovelluksen käyttötapaukset, niitä tukevat SQL-kyselyt sekä
 
 ```INSERT INTO thread(id, title, time_of_opening) VALUES(?, ?, current_timestamp())```
 
-* Keskusteluketjuja voi suodattaa näkyviin aiheiden mukaan. _Aihepiirien mukaan suodattaminen vielä kesken_
+* Keskusteluketjuja voi suodattaa näkyviin aiheiden mukaan.
+
+```SELECT * FROM thread LEFT JOIN thread_topic ON thread.id=thread_id LEFT JOIN topic ON topic_id=topic.id WHERE topic.id=?```
 
 * Keskusteluketjun poistaminen. Tämä toiminto ei aktivoidu suoraan käyttäjän toimenpiteestä, vaan epäsuorasti sen seurauksena, kun ketjun viimeinen viesti poistetaan.
 
