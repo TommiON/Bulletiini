@@ -3,7 +3,7 @@ Bulletiini on keskustelufoorumisovellus ja Helsingin yliopiston Tietokantaprojek
 
 Sovellus toimii [Herokussa](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella **testi** ja salasanalla **testi**, mutta kannattaa toki luoda oma tunnus käyttöön!
 
-[Ohjeet asennukseen ja käyttöön](https://github.com/TommiON/Bulletiini/blob/master/documentation/manual.md)
+[Käyttö- ja asennusohjeet](https://github.com/TommiON/Bulletiini/blob/master/documentation/manual.md)
 
 [Sovelluksen käsitteet ja käyttötapaukset](https://github.com/TommiON/Bulletiini/blob/master/documentation/usecases.md)
 
