@@ -25,3 +25,4 @@ Sovelluksen perustoiminnot löytyvät yläpalkista:
 * _Aihepiirit_ -välilehdeltä tavallinen käyttäjä näkee sovelluksen tarjoamat aiheet. Ylläpitokäyttäjä pääsee myös lisäämään ja poistamaan niitä.
 * _Käyttäjät_-välilehdeltä näkee sovellukseen rekisteröityneet käyttäjät. Käyttäjänimeä klikkaamalla saa tarkemmat tiedot kyseisestä käyttäjästä. Ylläpito-oikeuksin varustetulle käyttäjälle on sekä käyttäjälistassa että yksittäisen käyttäjän näkymässä tarjolla toiminnot käyttoikeuksien muuttamiseen sekä käyttäjätilin poistamiseen.
 * _Tilastot_-välilehti tarjoaa tilastotietoa Bulletiinista.
+* Oikessa yläkulmassa on toiminto sisään- ja uloskirjautumiseen. Sovellus näyttää tässä sisäänkirjautuneen käyttäjän nimen.
