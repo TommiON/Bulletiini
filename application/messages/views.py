@@ -50,7 +50,7 @@ def messages_delete(message_id):
 # palauttaa esitäytetyn lomakkeen viestin editoimiseen
 @app.route("/messages/edit/<message_id>", methods=["GET"])
 @login_required(role="BASIC")
-def messages_editingForm(message_id):
+def messages_edit_form(message_id):
     message_to_be_edited = Message.query.get(message_id)
     form = message_form()
     form.title.data = message_to_be_edited.title

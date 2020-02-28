@@ -35,7 +35,7 @@
             </td>
             <td>
               {% if (current_user.id == message.author_id) or (current_user.is_admin == True) %}
-              <a href="{{ url_for('messages_editingForm', message_id=message.id) }}">muokkaa</a>
+              <a href="{{ url_for('messages_edit_form', message_id=message.id) }}">muokkaa</a>
               {% endif %}
             </td>
             <td>
