@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for
 from flask_login import current_user
 from sqlalchemy.sql import text
 from application.topics.models import Topic
-from application.topics.forms import topic_form
+from application.topics.forms import TopicForm
 
 # tulostaa luettelon kaikista aiheista
 @app.route("/topics", methods=["GET"])
@@ -13,13 +13,13 @@ def topics_list():
 # palauttaa lomakkeen uuden aiheen luomiseksi
 @app.route("/topics/new", methods=["GET"])
 def topic_creation_form():
-    return render_template("topic_creation_form.html", form=topic_form())
+    return render_template("topic_creation_form.html", form=TopicForm())
 
 # luo uuden aiheen
 @app.route("/topics", methods=["POST"])
 @login_required(role="ADMIN")
 def topic_create():
-    form = topic_form(request.form)
+    form = TopicForm(request.form)
     name = form.name.data
     
     # validoidaan syöte
@@ -27,11 +27,8 @@ def topic_create():
         return render_template("topic_creation_form.html", form = form)
     
     # tarkistetaan löytyykö aihe jo tietokannasta, estetään duplikaatti
-    sqlQuery = text("SELECT * FROM topic WHERE topic.name = :new_name").params(new_name=name)
-    result = db.engine.execute(sqlQuery)
-    rows = result.fetchall()
-    if len(rows) > 0:
-        # notifikaatio?
+    already_exists = Topic.topic_already_exists(name)
+    if already_exists == True:
         return render_template("topic_list.html", topics = Topic.query.all())
     
     # lisätään tietokantaan

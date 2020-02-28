@@ -1,6 +1,5 @@
 from application import db
 from sqlalchemy.sql import text
-# from application.threads.models import Thread
 from application.associations import Thread_topic
 
 class Topic(db.Model):
@@ -22,3 +21,13 @@ class Topic(db.Model):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def topic_already_exists(topic_name):
+        sql_query = text("SELECT * FROM topic WHERE topic.name = :new_name").params(new_name=topic_name)
+        result = db.engine.execute(sql_query)
+        rows = result.fetchall()
+        if len(rows) > 0:
+            return True
+        else:
+            return False
