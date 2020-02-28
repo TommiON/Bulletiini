@@ -1,8 +1,9 @@
 # Puutteet ja kehityskohteet
 
-Ajanpuutteen vuoksi sovellukseen jäi ainakin yksi merkittävä bugi, joka kylläkään ei estä sovellusta toimimasta, mutta toimii eri tavalla kuin alunperin oli tarkoitus:
+Ajanpuutteen vuoksi sovellukseen jäi ainakin kaksi bugia, jotka kylläkään eivät estä sovellusta toimimasta, mutta toimivat eri tavalla kuin alunperin oli tarkoitus:
 
 * Jos Aihepiiriä on käytetty Keskusteluketjuissa ja kaikki Aihepiiriä käsittelevät Keskusteluketjut poistetaan, myös Aihepiiri poistuu. Alunperin tarkoituksena oli, että Aihepiiri jää jäljelle ja sitä voi käyttää tulevissa Ketjuissa. Bugi liittyy ilmeisesti SQLAlchemyn "Cascading" -toiminnallisuuteen ja koskeaa ainoastaan Herokua/PostgreSQL:aa. Paikallisessa SQLite-versiossa tätä käytöstä ei esiinny.
+* Keskusteluketjujen viestinäkymä heittää välillä viestit epämääräiseen järjestykseen. Huomasin viime hetkillä luottaneeni järjestämisessä id-numeroiden mukaan iteroimiseen, ja se ei toki ole järkevää, mutta en ehtinyt korjata.
 
 Lisäksi jäi toteuttamatta muutamia melko ilmeisiä toimintoja ja osa-alueita:
 
