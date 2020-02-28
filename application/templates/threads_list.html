@@ -5,10 +5,21 @@
 <a href="{{ url_for('thread_openingForm') }}">Aloita uusi keskusteluketju</a>
 <br></br>
 
-<p>Näytä vain tietyn aihepiirin keskustelut:</p>
-{% for topic in topics %}
-<a href="{{ url_for('threads_by_topic', topic_id=topic.id) }}">{{ topic.name }}</a>
-{% endfor %}
+<p>Suodata aihepiirin mukaan:</p>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+        <a href="{{ url_for('thread_list') }}">KAIKKI</a>
+      </td>
+      {% for topic in topics %}
+      <td>
+        <a href="{{ url_for('threads_by_topic', topic_id=topic.id) }}">{{ topic.name }}</a>
+      </td>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
 
 <table class="table">
     <thead class="thead-dark">
