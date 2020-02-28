@@ -2,14 +2,14 @@
   
 {% block body %}
 
-<h4>{{ thread.title }}, yhteensä {{ thread.totalNumberOfMessages(thread.id)}} viestiä</h4>
+<h4>{{ thread.title }}, yhteensä {{ thread.total_number_of_messages(thread.id)}} viestiä</h4>
 <p>
   Aihepiirit: 
   {% for topic in thread.topics %}
   {{ topic.name }} 
   {% endfor %}
 </p>
-<a href="{{ url_for('thread_responseForm', thread_id=thread.id) }}">Vastaa tähän keskusteluketjuun</a>
+<a href="{{ url_for('thread_response_form', thread_id=thread.id) }}">Vastaa tähän keskusteluketjuun</a>
 <br></br>
 <table class="table">
     <thead class="thead-dark">

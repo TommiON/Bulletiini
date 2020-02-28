@@ -6,7 +6,7 @@ class MultiCheckboxField(SelectMultipleField):
     widget = widgets.ListWidget(prefix_label=False)
     option_widget = widgets.CheckboxInput()
 
-class new_thread_form(FlaskForm):
+class NewThreadForm(FlaskForm):
     title = StringField(label="Otsikko", validators=[validators.InputRequired(), validators.Length(min=1), validators.Length(max=50)])
     content = TextAreaField(label="Viesti", validators=[validators.Length(max=5000)])
     topics = MultiCheckboxField(coerce=int)

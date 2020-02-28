@@ -4,7 +4,7 @@ from datetime import datetime
 from flask_login import current_user
 
 from application.threads.models import Thread
-from application.threads.forms import new_thread_form
+from application.threads.forms import NewThreadForm
 from application.messages.models import Message
 from application.messages.forms import MessageForm
 from application.topics.models import Topic
@@ -30,13 +30,11 @@ def thread_details(thread_id):
 # palauttaa lomakkeen uuden ketjun avaamiseksi
 @app.route("/threads/new", methods=["GET"])
 @login_required(role="BASIC")
-def thread_openingForm():
-    form = new_thread_form()
-    # topics = [(t.id, t.name) for t in Topic.query.all()]
+def thread_opening_form():
+    form = NewThreadForm()
     topics = Topic.query.all()
     return render_template("thread_creation_form.html", form=form, topics=topics)
     
-
 # luo uuden keskusteluketjun
 @app.route("/threads", methods=["POST"])
 @login_required(role="BASIC")
@@ -60,11 +58,10 @@ def thread_create():
     db.session.commit()
     return render_template("thread_details.html", thread = new_thread)
 
-
 # palauttaa lomakkeen olemassaolevaan ketjuun vastaamiseksi
 @app.route("/threads/<thread_id>/new", methods=["GET"])
 @login_required(role="BASIC")
-def thread_responseForm(thread_id):
+def thread_response_form(thread_id):
     return render_template("message_response_form.html", form=MessageForm(), thread_id=thread_id)
 
 # lisää uuden viestin ketjuun

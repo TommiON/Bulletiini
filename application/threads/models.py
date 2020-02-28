@@ -1,6 +1,5 @@
 from application import db
 from sqlalchemy.sql import text
-# from application.topics.models import Topic
 from application.associations import Thread_topic
 
 class Thread(db.Model):
@@ -29,9 +28,15 @@ class Thread(db.Model):
         return True
     
     @staticmethod
-    def totalNumberOfMessages(thread_id):
-        #sqlQuery = text("SELECT COUNT(Message.id) FROM Message WHERE Message.threadId = :thread").params(thread=thread_id)
-        sqlQuery = text("SELECT COUNT(message.id) FROM message LEFT JOIN thread ON thread.id = message.thread_id WHERE thread.id = :thread").params(thread=thread_id)
-        result = db.engine.execute(sqlQuery)
+    def total_number_of_messages(thread_id):
+        sql_query = text("SELECT COUNT(message.id) FROM message LEFT JOIN thread ON thread.id = message.thread_id WHERE thread.id = :thread").params(thread=thread_id)
+        result = db.engine.execute(sql_query)
+        for row in result:
+            return row[0]
+    
+    @staticmethod
+    def total_number_of_threads():
+        sql_query = text("SELECT COUNT(thread.id) FROM thread")
+        result = db.engine.execute(sql_query)
         for row in result:
             return row[0]

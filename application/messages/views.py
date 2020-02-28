@@ -38,10 +38,7 @@ def messages_delete(message_id):
     db.session.commit()
 
     # palataan keskusteluketjun näkymään tai poistetaan ketju jos poistettu viesti oli sen viimeinen
-    sqlQuery = text("SELECT COUNT(message.id) FROM message WHERE message.thread_id = :thread").params(thread=thread_id)
-    result = db.engine.execute(sqlQuery)
-    for row in result:
-        messages_left = row[0]
+    messages_left = Message.messages_left_in_thread(thread_id)
     if messages_left == 0:
         return redirect(url_for("threads_delete", thread_id=thread_id))
     return redirect(url_for("thread_details", thread_id = thread_id))

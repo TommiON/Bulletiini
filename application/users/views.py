@@ -22,7 +22,7 @@ def user_details(user_id):
 
 # lomake uuden käyttäjän luomiseen
 @app.route("/users/new", methods=["GET"])
-def users_creationForm():
+def users_creation_form():
     return render_template("user_creation_form.html", form=UserCreationForm())
 
 

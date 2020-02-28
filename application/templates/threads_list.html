@@ -2,7 +2,7 @@
   
 {% block body %}
     
-<a href="{{ url_for('thread_openingForm') }}">Aloita uusi keskusteluketju</a>
+<a href="{{ url_for('thread_opening_form') }}">Aloita uusi keskusteluketju</a>
 <br></br>
 
 <p>Suodata aihepiirin mukaan:</p>
@@ -42,7 +42,7 @@
               {% endfor %}
             </td>
             <td>{{ thread.time_of_opening.strftime('%d.%m %Y klo %I:%M') }}</td>
-            <td>{{ thread.totalNumberOfMessages(thread.id)}}</td>
+            <td>{{ thread.total_number_of_messages(thread.id)}}</td>
         </tr>
         {% endfor %}
     </tbody>
