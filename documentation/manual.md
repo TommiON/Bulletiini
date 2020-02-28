@@ -2,7 +2,7 @@
 
 ## Verkkosovellus
 
-Bulletiini on verkkosovellus eikä sellaisenaan vaadi asentamista. Sovellus löytyy [Herokusta](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella "testi" ja salasanalla "testi", jolla saa käyttöönsä ylläpitäjän oikeudet. Osa toiminallisuudesta (viestien lukeminen, käyttäjälista) on saatavilla myös ilman kirjautumista.
+Bulletiini on verkkosovellus eikä sellaisenaan vaadi asentamista. Sovellus löytyy [Herokusta](https://bulletiini.herokuapp.com/). Sovellukseen pääsee kirjautumaan testitunnuksella **testi** ja salasanalla **testi**, jolla saa käyttöönsä ylläpitäjän oikeudet. Osa toiminallisuudesta (viestien lukeminen, käyttäjälista) on saatavilla myös ilman kirjautumista.
 
 ## Paikallinen asentaminen
 
